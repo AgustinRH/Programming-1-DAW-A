@@ -35,7 +35,7 @@ public class Omirps {
                 System.out.println("El número " + inverso + " ES Omirp");
             }
             else{
-                System.out.println("El número " + inverso + "NO es Omirp");
+                System.out.println("El número " + inverso + " NO es Omirp");
             }
         }
         sc.close();
