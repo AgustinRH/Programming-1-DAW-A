@@ -17,14 +17,7 @@ public class Omirps {
                 }
             }
             if (primo) {
-                String reves = " ";
-                 reves = omirp.toString(reves);
-                
-                 int i;
-                for(i = reves.length()-1; i < 0; i--) {
-                    reves = reves.charAt(i);
-                }
-
+                // DAR la Vuelta al número
 
             }
         }
