@@ -12,13 +12,13 @@ public class Quiniela {
 
             switch ((int)num) {
                 case 1:
-                    System.out.print(1 + " - ");
+                    System.out.print("- " + 1 + " ");
                     break;
                 case 2:
-                    System.out.print(2 + " - ");
+                    System.out.print("- " + 2 + " " );
                     break;
                 case 3:
-                    System.out.print("X - ");
+                    System.out.print("- X ");
                     break;
                 default:
                     break;
