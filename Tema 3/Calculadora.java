@@ -18,7 +18,7 @@ public class Calculadora {
             b = sc.nextInt();
 
             System.out.println("¿Qué operación quieres ejecutar? (+, -, *, /)  -- Si desea salir diga 'Salir'.  ");
-            String operacion = sc.nextLine();
+            String operacion = sc.next();
 
             switch (operacion) {
                 case "+":

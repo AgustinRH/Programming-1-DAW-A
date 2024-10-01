@@ -44,7 +44,7 @@ public class Ruleta {
                 default:
                     break;
             }
-
+            
         }
 
         sc.close();
