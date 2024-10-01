@@ -100,5 +100,6 @@ public class ParesNones {
             default:
                 System.out.println("Error al elegir la opción");
         }
+        sc.close();
     }
 }

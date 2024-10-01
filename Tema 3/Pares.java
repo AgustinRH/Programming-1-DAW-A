@@ -26,5 +26,7 @@ public class Pares {
         } else {
             System.out.println("El valor de A debe ser menor al valor de B");
         }
+
+        sc.close();
     }
 }

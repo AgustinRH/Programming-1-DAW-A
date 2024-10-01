@@ -15,5 +15,6 @@ public class PositivoNegativo {
         else {
             System.out.println("El número no es ni positivo ni negativo");
         }
+        sc.close();
     }
 }

@@ -17,5 +17,7 @@ public class Restar {
         }
 
         System.out.println("El resultado de la resta del mayor por el menor es " + resta + " .");
+
+        sc.close();
     }
 }

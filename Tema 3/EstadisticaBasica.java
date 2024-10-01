@@ -23,5 +23,7 @@ public class EstadisticaBasica {
         System.out.println("El número máximo es " + max);
         System.out.println("El número mínimo es " + min);
         System.out.println("La media de los números es " + med);
+
+        sc.close();
     }
 }

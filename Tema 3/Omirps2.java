@@ -40,5 +40,6 @@ public class Omirps2 {
                 }
             }
         }
+        sc.close();
     }
 }

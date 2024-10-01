@@ -39,5 +39,6 @@ public class Calculadora {
                     break;
             }
         }
+        sc.close();
     }
 }

@@ -24,6 +24,6 @@ public class Quiniela {
                     break;
             }
         }
+        sc.close();
     }
-
 }

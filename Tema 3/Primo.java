@@ -20,5 +20,6 @@ public class Primo {
         } else {
             System.out.println("El número no es primo.");
         }
+        sc.close();
     }
 }

@@ -48,5 +48,7 @@ public class Impares {
         } else { // Comprobamos que los números no sean iguales.
             System.out.println("Los números son iguales. No puedo obtener ningún número impar.");
         }
+    
+        sc.close();
     }
 }

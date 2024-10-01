@@ -18,5 +18,6 @@ public class IntercambiarVariables {
         System.out.println("El valor de 'A' es " + a + " .");
         System.out.println("El valor de 'B' es " + c + " .");
 
+        sc.close();
     }
 }

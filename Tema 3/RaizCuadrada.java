@@ -15,5 +15,6 @@ public class RaizCuadrada {
         } else {
             System.out.println("No es posible hacer la raiz cuadrada de un número negativo o de cero.");
         }
+        sc.close();
     }
 }

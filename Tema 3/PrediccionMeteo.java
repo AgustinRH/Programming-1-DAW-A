@@ -69,7 +69,7 @@ public class PrediccionMeteo {
         } else {
             System.out.println("Error al insertar los datos, por favor. Inserte los valores correctos.");
         }
-        
+        sc.close();
     }
 
 }

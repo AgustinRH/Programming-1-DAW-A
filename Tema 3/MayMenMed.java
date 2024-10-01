@@ -49,5 +49,7 @@ public class MayMenMed {
         System.out.println("Mayor: " + mayor);
         System.out.println("Mediano: " + mediano);
         System.out.println("Menor: " + menor);
+        
+        sc.close();
     }
 }

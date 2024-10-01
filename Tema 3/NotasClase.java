@@ -23,5 +23,7 @@ public class NotasClase {
 
         System.out.println("Aprobados: " + aprobado);
         System.out.println("Suspensos: " + suspenso);
+
+        sc.close();
     }
 }

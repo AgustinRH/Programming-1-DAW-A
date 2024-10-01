@@ -32,5 +32,7 @@ public class NumeroSuerte {
         numSuerte = valor3 +valor4;
 
         System.out.println("Tu número de la suerte es " + numSuerte);
+
+        sc.close();
     }
 }

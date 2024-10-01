@@ -24,6 +24,6 @@ public class NumSecreto {
         System.out.println("¡Has acertado!");
         System.out.println("Lo has intentado " + count + " veces.");
 
-        
+        sc.close();
     }
 }

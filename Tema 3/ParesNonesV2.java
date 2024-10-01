@@ -54,5 +54,6 @@ public class ParesNonesV2 {
         } else {
             System.out.println("'A' y 'B' no pueden ser iguales.");
         }
+        sc.close();
     }
 }

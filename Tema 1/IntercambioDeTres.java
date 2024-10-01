@@ -13,16 +13,16 @@ public class IntercambioDeTres {
 
         System.out.println("Inserte el valor de 'C' :");
         int c = sc.nextInt();
-
-        int d = b;
+        
         int e = a;
 
         a = b;
         b = c;
         c = e;
-
         System.out.println("El valor de 'A' es " + a + " .");
         System.out.println("El valor de 'B' es " + b + " .");
         System.out.println("El valor de 'C' es " + c + " .");
+
+        sc.close();
     }
 }
