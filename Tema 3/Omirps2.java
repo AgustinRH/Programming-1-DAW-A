@@ -3,8 +3,11 @@ import java.util.Scanner;
 public class Omirps2 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        System.out.println("Introduce hasta que número quieres sacar Omirps");
+        int end = sc.nextInt();
+
         int num1, num2;
-        for (int i = 2; i < 1000; i++) {
+        for (int i = 2; i < end; i++) {
             num1 = i;
             String numero1, inverso = "";
 
