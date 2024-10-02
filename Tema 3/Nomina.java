@@ -12,21 +12,22 @@ public class Nomina {
         System.out.println("Cuanto te pagan por cada hora: ");
         double precio = sc.nextDouble();
 
-        //Calculamos las horas extra si es que tiene alguna.
+        // Calculamos las horas extra si es que tiene alguna.
         if (horas > 40) {
             extra = horas - 40;
-            horas = horas - extra;
+            if (extra <= 5) {
+                horas = horas - extra;
+            } else { // calculamos las horas extra más caras si es que tiene
+                extra2 = horas - 45;
+                horas = horas - extra2;
+            }
         }
-        // calculamos las horas extra más caras si es que tiene
-        if (horas > 45) {
-            extra2 = horas - 45;
-            horas = horas - extra2;
-        }
-        //Calculamos la nómina
+        
+        // Calculamos la nómina
         nomina = horas * precio + ((extra * precio) * 1.5);
-        //Calculamos es salario bruto semanal
+        // Calculamos es salario bruto semanal
         brutoMes = (horas * precio + ((extra * precio) * 1.5) + ((extra2 * precio) * 2)) * 4;
-        //Calculamos los impuestos según su salario.
+        // Calculamos los impuestos según su salario.
         if (brutoMes >= 1000) {
             disc = brutoMes * 0.15;
             System.out.println("Se le aplica un descuento de " + disc + " euros");
@@ -34,7 +35,8 @@ public class Nomina {
             disc = brutoMes * 0.1;
             System.out.println("Se le aplica un descuento de " + disc + " euros");
         }
-        //Mostramos en pantalla al usuario su nómina, el salario bruto mensual y su salario neto.
+        // Mostramos en pantalla al usuario su nómina, el salario bruto mensual y su
+        // salario neto.
         System.out.println("Tu nómina semanal  es de " + nomina + " euros.");
         System.out.println("Tu salario bruto/mes es de " + brutoMes + " euros.");
         System.out.println("Tu salario neto es de " + (brutoMes - disc) + " euros.");
