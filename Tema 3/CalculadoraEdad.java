@@ -44,7 +44,6 @@ public class CalculadoraEdad {
             System.out.println("Tienes " + meses +  " meses" );
         }
 
-
         System.out.println("Tienes " + edad + " años.");
     } 
 }
