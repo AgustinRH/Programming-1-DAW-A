@@ -16,70 +16,28 @@ public class MaquinaExpendedora {
         if (resto >= 50) { //Monedas de 50 céntimos hacia abajo
             cincuent = (int)resto / 50;
             resto -= (50*(double)cincuent);
-            if(resto >= 20) {
-                venti = (int)resto / 20;
-                resto -= (20*(double)venti);
-            } else if(resto >= 10) {
-                ten = (int)resto / 10;
-                resto -= (10*(double)ten);
-            } else if(resto >= 5) {
-                five = (int)resto / 5;
-                resto -= (5*(double)five);
-            } else if(resto >= 2) {
-                two = (int)resto / 2;
-                resto -= (2*(double)two);
-            } else if(resto >= 1) {
-                one = (int)resto/1;
-                resto -= (1*(double)one);
-            }
-        } else if(resto >= 20) { //Monedas de 20 céntimos hacia abajo
+           
+        } 
+        if(resto >= 20) { //Monedas de 20 céntimos hacia abajo
             venti = (int)resto / 20;
             resto -= (20*(double)venti);
-            if(resto >= 10) {
-                ten = (int)resto / 10;
-                resto -= (10*(double)ten);
-            } else if(resto >= 5) {
-                five = (int)resto / 5;
-                resto -= (5*(double)five);
-            } else if(resto >= 2) {
-                two = (int)resto / 2;
-                resto -= (2*(double)two);
-            } else if(resto >= 1) {
-                one = (int)resto/1;
-                resto -= (1*(double)one);
-            }
-        } else if(resto >= 10) { //Monedas de 10 céntimos hacia abajo
+           
+        }if(resto >= 10) { //Monedas de 10 céntimos hacia abajo
             ten = (int)resto / 10;
             resto -= (10*(double)ten);
-            if(resto >= 5) {
-                five = (int)resto / 5;
-                resto -= (5*(double)five);
-            } else if(resto >= 2) {
-                two = (int)resto / 2;
-                resto -= (2*(double)two);
-            } else if(resto >= 1) {
-                one = (int)resto/1;
-                resto -= (1*(double)one);
-            }
-        } else if(resto >= 5) { //Monedas de 5 céntimos hacia abajo
+            
+        } 
+        if(resto >= 5) { //Monedas de 5 céntimos hacia abajo
             five = (int)resto / 5;
             resto -= (5*(double)five);
-            if(resto >= 2) {
-                two = (int)resto / 2;
-                resto -= (2*(double)two);
-            } else if(resto >= 1) {
-                one = (int)resto/1;
-                resto -= (1*(double)one);
-            }
-        } else if(resto >= 2) { //Monedas de 2 céntimos hacia abajo
+        }  
+        
+        if(resto >= 2) { //Monedas de 2 céntimos hacia abajo
             two = (int)resto / 2;
             resto -= (2*(double)two);
-
-            if(resto >= 1) {
-                one = (int)resto/1;
-                resto -= (1*(double)one);
-            }
-        } else if(resto >= 1) { //Monedas de 1 céntimos
+        } 
+        
+        if(resto >= 1) { //Monedas de 1 céntimos
             one = (int)resto/1;
             resto -= (1*(double)one);
         }
