@@ -45,5 +45,7 @@ public class CalculadoraEdad {
         }
 
         System.out.println("Tienes " + edad + " años.");
+
+        sc.close();
     } 
 }
