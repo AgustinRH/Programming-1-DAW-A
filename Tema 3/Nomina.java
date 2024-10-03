@@ -18,14 +18,21 @@ public class Nomina {
             if (extra <= 5) {
                 horas = horas - extra;
             } else { // calculamos las horas extra más caras si es que tiene
-                extra2 = horas - 45;
-                horas = horas - extra2;
+                
+                extra = horas - 40 - 5;
+                extra2 = horas - 45.0;
+                horas = horas - extra2 - 5.0;
             }
         }
         
         // Calculamos la nómina
-        nomina = horas * precio + ((extra * precio) * 1.5);
-        // Calculamos es salario bruto semanal
+        
+        nomina = horas * precio + (((extra + 5 )* precio) * 1.5);
+        // Calculamos es salario bruto mensual.
+        System.out.println("Horas" + horas);
+        System.out.println("Precio" + precio);
+        System.out.println("extra" + extra);
+        System.out.println("Extra2" + extra2);
         brutoMes = (horas * precio + ((extra * precio) * 1.5) + ((extra2 * precio) * 2)) * 4;
         // Calculamos los impuestos según su salario.
         if (brutoMes >= 1000) {
@@ -43,5 +50,4 @@ public class Nomina {
 
         sc.close();
     }
-
 }
