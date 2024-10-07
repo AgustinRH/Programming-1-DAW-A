@@ -13,26 +13,26 @@ public class MaquinaExpendedora {
 
         resto = (dinero - (double)euros);
         resto = resto * 100;
-        if (resto >= 50) { //Monedas de 50 céntimos hacia abajo
+        if (resto >= 50) { //Monedas de 50 céntimos 
             cincuent = (int)resto / 50;
             resto -= (50*(double)cincuent);
            
         } 
-        if(resto >= 20) { //Monedas de 20 céntimos hacia abajo
+        if(resto >= 20) { //Monedas de 20 céntimos 
             venti = (int)resto / 20;
             resto -= (20*(double)venti);
            
-        }if(resto >= 10) { //Monedas de 10 céntimos hacia abajo
+        }if(resto >= 10) { //Monedas de 10 céntimos 
             ten = (int)resto / 10;
             resto -= (10*(double)ten);
             
         } 
-        if(resto >= 5) { //Monedas de 5 céntimos hacia abajo
+        if(resto >= 5) { //Monedas de 5 céntimos 
             five = (int)resto / 5;
             resto -= (5*(double)five);
         }  
         
-        if(resto >= 2) { //Monedas de 2 céntimos hacia abajo
+        if(resto >= 2) { //Monedas de 2 céntimos 
             two = (int)resto / 2;
             resto -= (2*(double)two);
         } 
