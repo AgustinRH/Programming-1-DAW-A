@@ -54,5 +54,7 @@ public class RestaurantePrueba {
             }
         }
 
+        sc.close();
+
     }
 }
