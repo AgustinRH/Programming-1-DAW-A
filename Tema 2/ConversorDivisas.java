@@ -1,10 +1,24 @@
 public class ConversorDivisas {
-    public double librasAEuros(double libra) {
-        double euros = libra * 0.85;
-        return euros;
+
+    private char tipoMoneda;
+    private int dinero;
+
+    public ConversorDivisas(char tipo, int d) {
+        tipoMoneda = tipo;
+        dinero = d;
     }
-    public double eurosALibras(double euro) {
-        double libras = euro / 0.85;
-        return libras;
+
+    public int Convertir(int tipo) {
+        int din = 0;
+        if(tipo == 'E') {
+            dinero /= 0.85;
+            din = dinero;
+        } 
+        
+        if(tipo == 'L') {
+            dinero *= 0.85;
+            din = dinero;
+        }
+        return din;
     }
 }

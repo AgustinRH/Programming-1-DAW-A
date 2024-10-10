@@ -4,30 +4,27 @@ public class ConversorDivisasPrueba {
     
     public static void main (String[] args) {
         Scanner sc = new Scanner(System.in);
-        double euro, libra;
-        int cambio;
+        char tipo = ' ';
+        int a;
+        int dinero;
 
-        ConversorDivisas conversor = new ConversorDivisas();
-
-        System.out.println("¿Qué quieres cambiar? (1 = euros, 2 = libras)");
-        cambio = sc.nextInt();
-
-        switch (cambio) {
-            case 1:
-                System.out.println("Ingrese cuantos euros quieres cambiar a libras: ");
-                euro = sc.nextDouble();
-                System.out.println(euro + " euros son " + Math.round(conversor.eurosALibras(euro)) + " libras.");
-                break;
-            case 2:
-                System.out.println("Ingrese cuantas libras quieres cambiar a euros: ");
-                libra = sc.nextDouble();
-                System.out.println(libra + " libras son " + Math.round(conversor.librasAEuros(libra)) + " euros.");
-                break;
-            default:
-            System.out.println("Error de moneda.");
-                break;
+        System.out.println("Ingresa el tipo de moneda que tienes: (1 = Euro, 2 = Libra)");
+        a = sc.nextInt();
+        if (a == 1) {
+            tipo = 'E';
         }
+        if (a == 2) {
+            tipo = 'L';
+        } else {
+            System.out.println("Error al introducir el tipo.");
+        }
+        System.out.println("Ingresa la cantidad: ");
+        dinero = sc.nextInt();
 
+        ConversorDivisas conversorDivisas = new ConversorDivisas(tipo, dinero);
+
+        System.out.println(conversorDivisas.Convertir(tipo));
+        
         sc.close();
     }
 }
