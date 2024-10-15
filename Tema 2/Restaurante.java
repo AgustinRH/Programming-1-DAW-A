@@ -32,9 +32,10 @@ public class Restaurante {
     }
 
     public void sirvePlato() {
-        if (cantChorizos > 0.2 && cantHuevos > 2) {cantChorizos -= 0.2;
-        cantHuevos -= 2;
-        System.out.println("Plato servidor con éxito!!");
+        if (cantChorizos > 0.2 && cantHuevos > 2) {
+            cantChorizos -= 0.2;
+            cantHuevos -= 2;
+            System.out.println("Plato servidor con éxito!!");
         } else {System.out.println("No es posible servir platos, no hay stock");}
     }
 
