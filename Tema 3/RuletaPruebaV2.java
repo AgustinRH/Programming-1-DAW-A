@@ -12,9 +12,8 @@ public class RuletaPruebaV2 {
         RuletaV2 ruleta = new RuletaV2();
         System.out.println("¡¡BIENVENIDO A LA RULETA!!");
 
-        try {
-            do {
-
+        do {
+            try {
                 System.out.println("--------------------------");
                 System.out.println("Elige una opción:");
                 System.out.println("1. Ver Saldo.");
@@ -33,14 +32,14 @@ public class RuletaPruebaV2 {
                             comodin = sc.nextInt();
                             if (comodin == -1) {
                                 siguiente = false;
-                            } 
+                            }
                         } while (siguiente);
                         break;
                     case 2:
                         do {
                             System.out.println("¿Cuánto dinero quieres añadir?");
                             saldo = sc.nextDouble();
-    
+
                             if (saldo < 0) {
                                 System.out.println("Error al añadir saldo");
                             } else {
@@ -51,7 +50,7 @@ public class RuletaPruebaV2 {
                             comodin = sc.nextInt();
                             if (comodin == -1) {
                                 siguiente = false;
-                            }  
+                            }
                         } while (siguiente);
                         break;
                     case 3:
@@ -71,7 +70,7 @@ public class RuletaPruebaV2 {
                             comodin = sc.nextInt();
                             if (comodin == -1) {
                                 siguiente = false;
-                            } 
+                            }
                         } while (siguiente);
                         break;
                     case 4:
@@ -86,7 +85,7 @@ public class RuletaPruebaV2 {
                                     System.out.println("No puedes apostar más de lo que tienes.");
                                 } else {
                                     ruleta.apuestaNumero(apuestaNumero);
-    
+
                                     if (numero == ruleta.getNumero()) {
                                         ruleta.apuestaNumero(apuestaNumero);
                                         System.out.println("¡Has acertado!, ahora tienes " + ruleta.getSaldo());
@@ -101,7 +100,7 @@ public class RuletaPruebaV2 {
                             comodin = sc.nextInt();
                             if (comodin == -1) {
                                 siguiente = false;
-                            } 
+                            }
                         } while (siguiente);
                         break;
                     case 5:
@@ -116,7 +115,7 @@ public class RuletaPruebaV2 {
                                     System.out.println("No puedes apostar más de lo que tienes.");
                                 } else {
                                     ruleta.apuestaColor(apuestaColor);
-    
+
                                     if (color == ruleta.getColor()) {
                                         ruleta.colorAcertado(apuestaColor);
                                         System.out.println("¡Has acertado!, ahora tienes " + ruleta.getSaldo());
@@ -132,7 +131,7 @@ public class RuletaPruebaV2 {
                             comodin = sc.nextInt();
                             if (comodin == -1) {
                                 siguiente = false;
-                            } 
+                            }
                         } while (siguiente);
                         break;
                     case 6:
@@ -143,10 +142,12 @@ public class RuletaPruebaV2 {
                         System.out.println("¡Opción incorrecta!");
                         break;
                 }
-            } while (continuar);
-        } catch (Exception e) {
-            System.out.println("Error al introducir el valor adecuado para el campo");
-        }
+            } catch (Exception e) {
+                System.out.println("Error al introducir el valor adecuado para el campo");
+                sc.nextLine();
+            }
+
+        } while (continuar);
 
         sc.close();
     }
