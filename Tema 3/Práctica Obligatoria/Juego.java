@@ -6,19 +6,28 @@ public class Juego {
 
         System.out.println(
                 "Ohhhh nooo!!, ¡¡te has caido por un túnel subterraneo!! \n Encuentra la forma de salir, pero ten cuidado, no sabes lo que puede haber en esta cueva...");
-
         System.out.println();
 
         Explorador explorer = new Explorador();
         Pingu pingu = new Pingu();
         String camino;
         boolean seguir = false, correcto = false, fin = false;
-
+        
         do {
             try {
                 System.out.println("Tienes " + explorer.getSalud() + " puntos de vida.");
                 System.out.println("Has vencido a " + pingu.getVencidos() + "/5 pingüinos.");
                 seguir = false;
+                System.out.println();
+                System.out.println("█▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█\r\n" + //
+                                        "█░██░██░██░██░██░██░██░██░██░░░░░░░░░░█\r\n" + //
+                                        "█░██░██░██░██░██░██░██░██░██░░░░░░░░░░█\r\n" + //
+                                        "█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█\r\n" + //
+                                        "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░\r\n" + //
+                                        "░░█░░░░█▀▀▀█░█▀▀█░█▀▀▄░▀█▀░█▄░░█░█▀▀█░░\r\n" + //
+                                        "░░█░░░░█░░░█░█▄▄█░█░░█░░█░░█░█░█░█░▄▄░░\r\n" + //
+                                        "░░█▄▄█░█▄▄▄█░█░░█░█▄▄▀░▄█▄░█░░▀█░█▄▄█░░\r\n" + //
+                                        "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░");
                 System.out.println("Pulsa cualquier tecla para comenzar...");
                 sc.nextLine();
 
@@ -67,6 +76,32 @@ public class Juego {
                 // Nos encontramos con un pingüino!!
                 while (!correcto) {
                     tipopingu = pingu.pinguAzar();
+                    System.out.println("            _____                             \r\n" + //
+                                                "          ,888888b.                  \r\n" + //
+                                                "        .d888888888b                 \r\n" + //
+                                                "    _..-'.`*'_,88888b                \r\n" + //
+                                                "  ,'..-..`\"ad88888888b.             \r\n" + //
+                                                "         ``-. `*Y888888b.            \r\n" + //
+                                                "             \\   `Y888888b.        \r\n" + //
+                                                "             :     Y8888888b.              \r\n" + //
+                                                "             :      Y88888888b.               \r\n" + //
+                                                "             |    _,8ad88888888.                       \r\n" + //
+                                                "             : .d88888888888888b.                        \r\n" + //
+                                                "             \\d888888888888888888           \r\n" + //
+                                                "             8888;'''`88888888888                      \r\n" + //
+                                                "             888'     Y8888888888                     \r\n" + //
+                                                "             `Y8      :8888888888                   \r\n" + //
+                                                "              |`      '8888888888                      \r\n" + //
+                                                "              |        8888888888                        \r\n" + //
+                                                "              |        8888888888                          \r\n" + //
+                                                "              |        8888888888                        \r\n" + //
+                                                "              |       ,888888888P                          \r\n" + //
+                                                "              :       ;888888888'                     \r\n" + //
+                                                "               \\      d88888888'                          \r\n" + //
+                                                "              _.>,    888888P'                          \r\n" + //
+                                                "            <,--''`.._>8888(                         \r\n" + //
+                                                "             `>__...--' `''` SSt                         \r\n" + //
+                                                "                                       ");
                     System.out.println("¡¡Te has encontrado con un " + tipopingu + " mutante!!");
                     System.out.println("¿Qué quieres hacer? \n 1. Huir. \n 2. Luchar");
                     eleccion = sc.nextInt();
@@ -112,11 +147,7 @@ public class Juego {
                     }
                     if (pingu.getVencidos() >= 5) {
                         System.out.println("Has derrotado a todos los pingüinos de la caverna. ¡Bien hecho!");
-                        System.out.println("Para poder evitarlo debes decirme tu contraseña de tu correo electronico");
-                        sc.nextLine();
-
-                        System.out.println("Es broma xd, no la he guardado. Pero ten mucho cudiado la próxima vez.");
-
+                        fin = true;
                     }
                 }
             } catch (Exception e) {
