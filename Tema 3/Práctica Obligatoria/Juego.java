@@ -111,7 +111,7 @@ public class Juego {
                         fin = true;
                     }
                     if (pingu.getVencidos() >= 5) {
-                        System.out.println("Has salido con vida, pero te has topado con... ¡¡El PINGÜINO PADRE!!");
+                        System.out.println("Has derrotado a todos los pingüinos de la caverna. ¡Bien hecho!");
                         System.out.println("Para poder evitarlo debes decirme tu contraseña de tu correo electronico");
                         sc.nextLine();
 
