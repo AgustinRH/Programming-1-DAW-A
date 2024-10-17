@@ -2,36 +2,39 @@ import java.util.Scanner;
 
 public class Juego {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in); // Crea un objeto Scanner para leer la entrada del usuario
 
         System.out.println(
                 "Ohhhh nooo!!, ¡¡te has caido por un túnel subterraneo!! \n Encuentra la forma de salir, pero ten cuidado, no sabes lo que puede haber en esta cueva...");
         System.out.println();
 
-        Explorador explorer = new Explorador();
-        Pingu pingu = new Pingu();
+        Explorador explorer = new Explorador(); // Crea un objeto Explorador para representar al jugador
+        Pingu pingu = new Pingu(); // Crea un objeto Pingu para representar los enemigos
+
+        // Variables de control para el juego
         String camino;
         boolean seguir = false, correcto = false, fin = false;
         
         do {
             try {
+                // Muestra la información del jugador y los pingüinos vencidos
                 System.out.println("Tienes " + explorer.getSalud() + " puntos de vida.");
                 System.out.println("Has vencido a " + pingu.getVencidos() + "/5 pingüinos.");
                 seguir = false;
                 System.out.println();
                 System.out.println("█▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█\r\n" + //
-                                        "█░██░██░██░██░██░██░██░██░██░░░░░░░░░░█\r\n" + //
-                                        "█░██░██░██░██░██░██░██░██░██░░░░░░░░░░█\r\n" + //
-                                        "█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█\r\n" + //
-                                        "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░\r\n" + //
-                                        "░░█░░░░█▀▀▀█░█▀▀█░█▀▀▄░▀█▀░█▄░░█░█▀▀█░░\r\n" + //
-                                        "░░█░░░░█░░░█░█▄▄█░█░░█░░█░░█░█░█░█░▄▄░░\r\n" + //
-                                        "░░█▄▄█░█▄▄▄█░█░░█░█▄▄▀░▄█▄░█░░▀█░█▄▄█░░\r\n" + //
-                                        "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░");
+                                   "█░██░██░██░██░██░██░██░██░██░░░░░░░░░░█\r\n" + //
+                                   "█░██░██░██░██░██░██░██░██░██░░░░░░░░░░█\r\n" + //
+                                   "█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█\r\n" + //
+                                   "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░\r\n" + //
+                                   "░░█░░░░█▀▀▀█░█▀▀█░█▀▀▄░▀█▀░█▄░░█░█▀▀█░░\r\n" + //
+                                   "░░█░░░░█░░░█░█▄▄█░█░░█░░█░░█░█░█░█░▄▄░░\r\n" + //
+                                   "░░█▄▄█░█▄▄▄█░█░░█░█▄▄▀░▄█▄░█░░▀█░█▄▄█░░\r\n" + //
+                                   "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░");
                 System.out.println("Pulsa cualquier tecla para comenzar...");
                 sc.nextLine();
 
-                // Se divide el camino. Escogemos una opción que no sea la anterior...
+                // Bucle para elegir el camino
                 while (!seguir) {
 
                     System.out.println(
@@ -70,12 +73,16 @@ public class Juego {
                     }
                 }
 
+                // Variables del juego
                 int eleccion = 0;
                 String tipopingu;
                 correcto = false;
-                // Nos encontramos con un pingüino!!
+
+                // Bucle para el encuentro con el pingüino
                 while (!correcto) {
+                    // Genera un tipo de pingüino aleatorio
                     tipopingu = pingu.pinguAzar();
+                    // Muestra un dibujo ASCII del pingüino
                     System.out.println("            _____                             \r\n" + //
                                                 "          ,888888b.                  \r\n" + //
                                                 "        .d888888888b                 \r\n" + //
@@ -105,6 +112,8 @@ public class Juego {
                     System.out.println("¡¡Te has encontrado con un " + tipopingu + " mutante!!");
                     System.out.println("¿Qué quieres hacer? \n 1. Huir. \n 2. Luchar");
                     eleccion = sc.nextInt();
+                    
+                    // Opción a escoger para que el jugador elija entre huir o luchar
                     switch (eleccion) {
                         case 1:
                             explorer.huir();
