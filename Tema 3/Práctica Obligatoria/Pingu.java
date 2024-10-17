@@ -2,7 +2,8 @@
 public class Pingu {
     int vencidos = 0;
     String pingu;
-    int azar, num;
+    int azar, num, egg;
+    boolean huevo = false;
     
     public String pinguAzar() {
         this.azar = (int)(Math.random()*5+1);
@@ -35,5 +36,13 @@ public class Pingu {
     public int numeroAzar() {
         num = (int)(Math.random()* 100 + 1);
         return num;
+    }
+
+    public boolean soltarHuevoMagico() {
+        egg = (int)(Math.random()*2 + 1);
+        if (egg == 1) {
+            huevo = true;
+        }
+        return huevo;
     }
 }

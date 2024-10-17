@@ -19,28 +19,29 @@ public class Juego {
                 System.out.println("Tienes " + explorer.getSalud() + " puntos de vida.");
                 System.out.println("Has vencido a " + pingu.getVencidos() + "/5 pingüinos.");
                 seguir = false;
+                System.out.println("Pulsa cualquier tecla para comenzar...");
                 sc.nextLine();
-        
+
                 // Se divide el camino. Escogemos una opción que no sea la anterior...
                 while (!seguir) {
-        
+
                     System.out.println(
                             "Oh no!!. Se divide el camino. ¿Dónde quieres ir?");
-                            if (explorer.getNoCamino().equals("N")) {
-                                System.out.println("\n E = Este. \n O = Oeste. \n S = Sur.");
-                            } else if (explorer.getNoCamino().equals("S")) {
-                                System.out.println("\n E = Este. \n O = Oeste. \n N = Norte.");
-                            } else if (explorer.getNoCamino().equals("E")) {
-                                System.out.println("\n N = Norte. \n S = Sur. \n O = Oeste.");
-                            } else if (explorer.getNoCamino().equals("O")) {
-                                System.out.println("\n N = Norte. \n S = Sur. \n E = Este.");
-                            }
+                    if (explorer.getNoCamino().equals("N")) {
+                        System.out.println("\n E = Este. \n O = Oeste. \n S = Sur.");
+                    } else if (explorer.getNoCamino().equals("S")) {
+                        System.out.println("\n E = Este. \n O = Oeste. \n N = Norte.");
+                    } else if (explorer.getNoCamino().equals("E")) {
+                        System.out.println("\n N = Norte. \n S = Sur. \n O = Oeste.");
+                    } else if (explorer.getNoCamino().equals("O")) {
+                        System.out.println("\n N = Norte. \n S = Sur. \n E = Este.");
+                    }
                     camino = sc.nextLine();
-        
+
                     if (!camino.equals(explorer.getNoCamino())) {
                         explorer.elegirCamino(camino);
                         seguir = true;
-        
+
                         if (explorer.getCamino().equals("S")) {
                             System.out.println("Has elegido ir hacia el Sur");
                         } else if (explorer.getCamino().equals("N")) {
@@ -53,13 +54,13 @@ public class Juego {
                             System.out.println("¡Esa dirección no existe!");
                             seguir = false;
                         }
-                    } else if (camino.equals(explorer.getNoCamino())){
+                    } else if (camino.equals(explorer.getNoCamino())) {
                         System.out.println("¡¡No puedes volver por donde has venido, estás atrapado por la nieve!!");
                     } else {
                         System.out.println("Esa dirección no existe");
                     }
                 }
-        
+
                 int eleccion = 0;
                 String tipopingu;
                 correcto = false;
@@ -82,11 +83,18 @@ public class Juego {
                                 explorer.saludVictoria();
                                 System.out.println("Ahora tienes " + explorer.getSalud() + " puntos de vida.");
                                 pingu.addVencido();
-                                System.out.println("Has derrotado un total de " + pingu.getVencidos() + " pingüinos.");
+                                if (pingu.soltarHuevoMagico()) {
+                                    System.out.println(
+                                            "¡¡Te has encontrado un huevo mágico, llevando esto encima serás el rey de los pingüinos!!");
+                                    fin = true;
+                                }
+
+                                System.out.println("¡Enhorabuena! Has logrado salir con vida.");
+
                             } else {
                                 System.out.println("¡Has perdido!");
                                 explorer.saludDerrota();
-                                if (explorer.getSalud()> 0) {
+                                if (explorer.getSalud() > 0) {
                                     System.out.println("Ahora tienes " + explorer.getSalud() + " puntos de vida.");
                                 } else {
                                     System.out.println("Has sido asesinado por un pingüino");
@@ -97,12 +105,12 @@ public class Juego {
                             System.out.println("Esa opción no esta en tus planes.");
                             break;
                     }
-                    
+
                     correcto = true;
                     if (explorer.getSalud() <= 0) {
                         fin = true;
                     }
-                    if ( pingu.getVencidos() >= 5) {
+                    if (pingu.getVencidos() >= 5) {
                         System.out.println("Has salido con vida, pero te has topado con... ¡¡El PINGÜINO PADRE!!");
                         System.out.println("Para poder evitarlo debes decirme tu contraseña de tu correo electronico");
                         sc.nextLine();
