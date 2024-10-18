@@ -142,7 +142,7 @@ public class Juego {
                                                                         // acorde al pingüino derrotado
                                 System.out.println("¡Has ganado!");
                                 explorer.saludVictoria();
-                                System.out.println("Ahora tienes " + explorer.getSalud() + " puntos de vida.");
+                                System.out.println("Tienes " + explorer.getSalud() + " puntos de vida.");
                                 pingu.addVencido();
                                 if (pingu.soltarHuevoMagico()) { // Si suelta un huevo mágico termina el juego
                                                                  // directamente
