@@ -123,7 +123,7 @@ public class Juego {
 
                     // Menú para elegir si huir o atacar al pingüino que le ataca
                     System.out.println("¡¡Te has encontrado con un " + tipopingu + " mutante!!");
-                    System.out.println("¿Qué quieres hacer? \n 1. Huir. \n 2. Luchar");
+                    System.out.println("¿Qué quieres hacer? \n 1. Huir. \n 2. Luchar. \n 3. Atrapar.");
                     eleccion = sc.nextInt();
 
                     // Opción a escoger para que el jugador elija entre huir o luchar
@@ -155,7 +155,8 @@ public class Juego {
 
                                 System.out.println("¡Enhorabuena! Has logrado salir con vida.");
 
-                            } else { // Si pierde, avisamos al usuario y le restamos la vida que le ha quitado el pingüino
+                            } else { // Si pierde, avisamos al usuario y le restamos la vida que le ha quitado el
+                                     // pingüino
                                 System.out.println("¡Has perdido la batalla!");
                                 explorer.saludDerrota();
                                 if (explorer.getSalud() > 0) {
@@ -165,7 +166,52 @@ public class Juego {
                                 }
                             }
                             break;
-                        default: // Si elige otra opción que no sea huir o luchar, avisamos al usuario de que esa opción no es válida
+                        case 3:
+                            System.out.println("Has decidido atrapar al pingüino. Va a ser difícil...");
+                            int atrapado = pingu.atraparPingu(tipopingu);
+                            if (atrapado == 0) {
+                                System.out.println("No has podido atraparlo, ahora debes luchar con el...");
+                                System.out.println("SALUD:" + explorer.getSalud());
+                                if (explorer.pelearPingu(tipopingu) == 1) { // Si gana, avisamos al usuario y sumamos 1
+                                                                            // a
+                                                                            // los pingüinos derrotados y sumamos la
+                                                                            // salud
+                                                                            // acorde al pingüino derrotado
+                                    System.out.println("¡Has ganado!");
+                                    explorer.saludVictoria();
+                                    System.out.println("Tienes " + explorer.getSalud() + " puntos de vida.");
+                                    pingu.addVencido();
+                                    if (pingu.soltarHuevoMagico()) { // Si suelta un huevo mágico termina el juego
+                                                                     // directamente
+                                        System.out.println(
+                                                "¡¡Te has encontrado un huevo mágico, llevando esto encima serás el rey de los pingüinos!!");
+                                        fin = true;
+                                    }
+
+                                    System.out.println("¡Enhorabuena! Has logrado salir con vida.");
+
+                                } else { // Si pierde, avisamos al usuario y le restamos la vida que le ha quitado el
+                                         // pingüino
+                                    System.out.println("¡Has perdido la batalla!");
+                                    explorer.saludDerrota();
+                                    if (explorer.getSalud() > 0) {
+                                        System.out.println("Ahora tienes " + explorer.getSalud() + " puntos de vida.");
+                                    } else {
+                                        System.out.println("Has sido asesinado por un pingüino");
+                                    }
+                                }
+                            } else if (pingu.atraparPingu(tipopingu) == 1) {
+                                if (pingu.cantAtrapados >= 1) {
+                                    System.out.println(
+                                            "No puedes atrapar más pingüinos, ya tienes un pingüino atrapado :v");
+                                } else {
+                                    System.out.println("Has atrapado un pingüino, bien hecho!!");
+                                }
+
+                            }
+                            break;
+                        default: // Si elige otra opción que no sea huir o luchar, avisamos al usuario de que esa
+                                 // opción no es válida
                             System.out.println("Esa opción no esta en tus planes.");
                             break;
                     }
