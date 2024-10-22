@@ -137,6 +137,8 @@ public class Juego {
                         case 2: // Si decide atacar llamamos al método pelearPingu de la clase Explorador para
                                 // sacar aleatoriamente si gana o pierde
                             System.out.println("Has decidico luchar. Era un " + tipopingu);
+
+                            System.out.println("SALUD:" + explorer.getSalud());
                             if (explorer.pelearPingu(tipopingu) == 1) { // Si gana, avisamos al usuario y sumamos 1 a
                                                                         // los pingüinos derrotados y sumamos la salud
                                                                         // acorde al pingüino derrotado
@@ -154,7 +156,7 @@ public class Juego {
                                 System.out.println("¡Enhorabuena! Has logrado salir con vida.");
 
                             } else { // Si pierde, avisamos al usuario y le restamos la vida que le ha quitado el pingüino
-                                System.out.println("¡Has perdido!");
+                                System.out.println("¡Has perdido la batalla!");
                                 explorer.saludDerrota();
                                 if (explorer.getSalud() > 0) {
                                     System.out.println("Ahora tienes " + explorer.getSalud() + " puntos de vida.");

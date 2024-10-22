@@ -3,7 +3,7 @@ public class Explorador {
 
     // Variables de control para el juego
     int salud = 50, lucha, ganado;
-    String camino, no_camino = "N", tipo;
+    String camino, no_camino = "N", tipo = "";
 
     // Método para sumarle vida al jugador
     public void addVida(int salud) {
@@ -124,19 +124,19 @@ public class Explorador {
         }
         // Si ganas al pingüino S se suma aleatoriamente entre 10 y 20 puntos a la vida
         if (tipo.equals("Pingüino S")) {
-            this.salud += (int) (Math.random() * 20 + 10);
+            this.salud += (int) (Math.random() * 11 + 10);
         }
         // Si ganas al pingüino M se suma aleatoriamente entre 20 y 30 puntos a la vida
         if (tipo.equals("Pingüino M")) {
-            this.salud += (int) (Math.random() * 30 + 20);
+            this.salud += (int) (Math.random() * 11 + 20);
         }
         // Si ganas al pingüino L se suma aleatoriamente entre 30 y 40 puntos a la vida
         if (tipo.equals("Pingüino L")) {
-            this.salud += (int) (Math.random() * 40 + 30);
+            this.salud += (int) (Math.random() * 11 + 30);
         }
         // Si ganas al pingüino XL se suma aleatoriamente entre 40 y 50 puntos a la vida
         if (tipo.equals("Pingüino XL")) {
-            this.salud += (int) (Math.random() * 50 + 40);
+            this.salud += (int) (Math.random() * 11 + 40);
         }
     }
 
@@ -151,23 +151,23 @@ public class Explorador {
         // Si no ganas al pingüino S se suma aleatoriamente entre 10 y 20 puntos a la
         // vida
         if (tipo.equals("Pingüino S")) {
-            this.salud -= (int) (Math.random() * 20 + 10);
+            this.salud -= (int) (Math.random() * 11 + 10);
         }
         // Si no ganas al pingüino M se suma aleatoriamente entre 20 y 30 puntos a la
         // vida
         if (tipo.equals("Pingüino M")) {
-            this.salud -= (int) (Math.random() * 30 + 20);
+            this.salud -= (int) (Math.random() * 11 + 20);
         }
         // Si no ganas al pingüino L se suma aleatoriamente entre 30 y 40 puntos a la
         // vida
         if (tipo.equals("Pingüino L")) {
-            this.salud -= (int) (Math.random() * 40 + 30);
+            this.salud -= (int) (Math.random() * 11 + 30);
         }
         // Si no ganas al pingüino XL se suma aleatoriamente entre 40 y 50 puntos a la
         // vida
         if (tipo.equals("Pingüino XL")) {
-            this.salud -= (int) (Math.random() * 50 + 40);
+            this.salud -= (int) (Math.random() * 11 + 40);
         }
     }
-
 }
+
