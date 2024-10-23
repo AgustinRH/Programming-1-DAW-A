@@ -8,6 +8,27 @@ public class Juego {
         System.out.println(
                 "Ohhhh nooo!!, ¡¡te has caido por un túnel subterraneo!! \n Encuentra la forma de salir, pero ten cuidado, no sabes lo que puede haber en esta cueva...");
         System.out.println();
+        System.out.println("\r\n" + //
+                        "                                              |  :\r\n" + //
+                        "                                     :     :  :  |\r\n" + //
+                        "                      :     :     :  |  :  |     :\r\n" + //
+                        "                   :  |     |     |  :  |   _,-'^\\\r\n" + //
+                        "                   |  :  |  :  |  :  |  _,-'   ,\\ )\r\n" + //
+                        "                   :  |  :  |  :  |  ,-'     ,'  ~'\r\n" + //
+                        "                 :  ,,.  |  :  |  ,-'      ,'\r\n" + //
+                        "                 | `\\ /  :  __ ,-'       ,'\r\n" + //
+                        "                 : / /  _,-'  `,       ,'\r\n" + //
+                        "                  / <,-'       '     ,' |\r\n" + //
+                        "                 (          _,__,_ ,' | :\r\n" + //
+                        "             :    '-,_  _,-\"      \"-,_: |\r\n" + //
+                        "             : | :   ,>'     (\\/)     \\ :\r\n" + //
+                        "             | :  ,-'  ,-'`;     }`\"\\  \\\r\n" + //
+                        "             : ,-' ,-'`    [  a a|   \\  }\r\n" + //
+                        "             ,/ ('`         ~\\  /     | |\r\n" + //
+                        "             \"~`             (_o)     | \\\r\n" + //
+                        "                                     ,/ (\r\n" + //
+                        "                                      \"~`\r\n" + //
+                        "");
 
         Explorador explorer = new Explorador(); // Crea un objeto Explorador para representar al jugador
         Pingu pingu = new Pingu(); // Crea un objeto Pingu para representar los enemigos
@@ -94,32 +115,25 @@ public class Juego {
                     // Genera un tipo de pingüino aleatorio
                     tipopingu = pingu.pinguAzar();
                     // Muestra un dibujo ASCII del pingüino
-                    System.out.println("            _____                             \r\n" + //
-                            "          ,888888b.                  \r\n" + //
-                            "        .d888888888b                 \r\n" + //
-                            "    _..-'.`*'_,88888b                \r\n" + //
-                            "  ,'..-..`\"ad88888888b.             \r\n" + //
-                            "         ``-. `*Y888888b.            \r\n" + //
-                            "             \\   `Y888888b.        \r\n" + //
-                            "             :     Y8888888b.              \r\n" + //
-                            "             :      Y88888888b.               \r\n" + //
-                            "             |    _,8ad88888888.                       \r\n" + //
-                            "             : .d88888888888888b.                        \r\n" + //
-                            "             \\d888888888888888888           \r\n" + //
-                            "             8888;'''`88888888888                      \r\n" + //
-                            "             888'     Y8888888888                     \r\n" + //
-                            "             `Y8      :8888888888                   \r\n" + //
-                            "              |`      '8888888888                      \r\n" + //
-                            "              |        8888888888                        \r\n" + //
-                            "              |        8888888888                          \r\n" + //
-                            "              |        8888888888                        \r\n" + //
-                            "              |       ,888888888P                          \r\n" + //
-                            "              :       ;888888888'                     \r\n" + //
-                            "               \\      d88888888'                          \r\n" + //
-                            "              _.>,    888888P'                          \r\n" + //
-                            "            <,--''`.._>8888(                         \r\n" + //
-                            "             `>__...--' `''` SSt                         \r\n" + //
-                            "                                       ");
+                    System.out.println("         /~~~~~~\\\r\n" + //
+                                                "       /`    -s- ~~~~\\\r\n" + //
+                                                "      /`::::      ~~~~\r\n" + //
+                                                "     /`:::::     :\r\n" + //
+                                                "    /` :::::...::::\r\n" + //
+                                                "   /`   `:::::::::::\r\n" + //
+                                                "  /`      `:::::::::\r\n" + //
+                                                " /`        :::::::::\r\n" + //
+                                                " :        ::::::::::\r\n" + //
+                                                " :       :::::::::::\r\n" + //
+                                                " :       :::::::::::\r\n" + //
+                                                " :   .    ::::::::::\r\n" + //
+                                                " :   :.   ::::::::'\r\n" + //
+                                                " :   ::  .:::::::'\r\n" + //
+                                                " :   ::..:::::::'\r\n" + //
+                                                " :    :::::::::'\r\n" + //
+                                                "  :    :::::::::\r\n" + //
+                                                "   :..::......::\r\n" + //
+                                                "||||||||||||||||||||||||||");
 
                     // Menú para elegir si huir o atacar al pingüino que le ataca
                     System.out.println("¡¡Te has encontrado con un " + tipopingu + " mutante!!");

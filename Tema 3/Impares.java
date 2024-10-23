@@ -12,6 +12,10 @@ public class Impares {
         System.out.println("Inserta el valor de B");
         b = sc.nextInt();
 
+        int c = 2, d = 5;
+
+        System.out.println(c + d);
+
         // Comprobamos si A es menor que B para sacar los números impares.
         if (a < b) {
             if (a % 2 != 0) {
