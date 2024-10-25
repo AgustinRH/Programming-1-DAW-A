@@ -5,30 +5,10 @@ public class Juego {
         Scanner sc = new Scanner(System.in); // Crea un objeto Scanner para leer la entrada del usuario
 
         // Informamos al usuario de como comenzará el juego...
-        System.out.println(
-                "Ohhhh nooo!!, ¡¡te has caido por un túnel subterraneo!! \n Encuentra la forma de salir, pero ten cuidado, no sabes lo que puede haber en esta cueva...");
         System.out.println();
-        System.out.println("\r\n" + //
-                        "                                              |  :\r\n" + //
-                        "                                     :     :  :  |\r\n" + //
-                        "                      :     :     :  |  :  |     :\r\n" + //
-                        "                   :  |     |     |  :  |   _,-'^\\\r\n" + //
-                        "                   |  :  |  :  |  :  |  _,-'   ,\\ )\r\n" + //
-                        "                   :  |  :  |  :  |  ,-'     ,'  ~'\r\n" + //
-                        "                 :  ,,.  |  :  |  ,-'      ,'\r\n" + //
-                        "                 | `\\ /  :  __ ,-'       ,'\r\n" + //
-                        "                 : / /  _,-'  `,       ,'\r\n" + //
-                        "                  / <,-'       '     ,' |\r\n" + //
-                        "                 (          _,__,_ ,' | :\r\n" + //
-                        "             :    '-,_  _,-\"      \"-,_: |\r\n" + //
-                        "             : | :   ,>'     (\\/)     \\ :\r\n" + //
-                        "             | :  ,-'  ,-'`;     }`\"\\  \\\r\n" + //
-                        "             : ,-' ,-'`    [  a a|   \\  }\r\n" + //
-                        "             ,/ ('`         ~\\  /     | |\r\n" + //
-                        "             \"~`             (_o)     | \\\r\n" + //
-                        "                                     ,/ (\r\n" + //
-                        "                                      \"~`\r\n" + //
-                        "");
+        System.out.println("--------------------------------------------------------------------------");
+        System.out.println(
+                "OHH NOOO!!, !!TE HAS CAIDO A UNA SIMA DE HIELO!! \n Encuentra la forma de salir, pero ten cuidado, no sabes lo que puede haber en esta cueva...");
 
         Explorador explorer = new Explorador(); // Crea un objeto Explorador para representar al jugador
         Pingu pingu = new Pingu(); // Crea un objeto Pingu para representar los enemigos
@@ -37,6 +17,7 @@ public class Juego {
         String camino;
         boolean seguir = false, correcto = false, fin = false;
 
+        System.out.println("--------------------------------------------------------------------------");
         // Bucle para no finalizar el juego cuando sea necesario
         do {
             try {
@@ -44,20 +25,8 @@ public class Juego {
                 System.out.println("Tienes " + explorer.getSalud() + " puntos de vida.");
                 System.out.println("Has vencido a " + pingu.getVencidos() + "/5 pingüinos.");
                 seguir = false;
+                
 
-                // Dibujo ASCII para simular una carga del juego...
-                System.out.println();
-                System.out.println("█▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█\r\n" + //
-                        "█░██░██░██░██░██░██░██░██░██░░░░░░░░░░█\r\n" + //
-                        "█░██░██░██░██░██░██░██░██░██░░░░░░░░░░█\r\n" + //
-                        "█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█\r\n" + //
-                        "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░\r\n" + //
-                        "░░█░░░░█▀▀▀█░█▀▀█░█▀▀▄░▀█▀░█▄░░█░█▀▀█░░\r\n" + //
-                        "░░█░░░░█░░░█░█▄▄█░█░░█░░█░░█░█░█░█░▄▄░░\r\n" + //
-                        "░░█▄▄█░█▄▄▄█░█░░█░█▄▄▀░▄█▄░█░░▀█░█▄▄█░░\r\n" + //
-                        "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░");
-                System.out.println("Pulsa cualquier tecla para comenzar...");
-                sc.nextLine();
 
                 // Bucle para elegir el camino
                 while (!seguir) {
@@ -83,7 +52,8 @@ public class Juego {
                     if (!camino.equals(explorer.getNoCamino())) {
                         explorer.elegirCamino(camino);
                         seguir = true;
-
+                        System.out
+                                .println("--------------------------------------------------------------------------");
                         // Decimos que camino ha escogido
                         if (explorer.getCamino().equals("S")) {
                             System.out.println("Has elegido ir hacia el Sur");
@@ -104,7 +74,6 @@ public class Juego {
                         System.out.println("Esa dirección no existe");
                     }
                 }
-
                 // Variables del juego
                 int eleccion = 0;
                 String tipopingu;
@@ -113,34 +82,36 @@ public class Juego {
                 // Bucle para el encuentro con el pingüino
                 while (!correcto) {
                     // Genera un tipo de pingüino aleatorio
+                    System.out.println("--------------------------------------------------------------------------");
                     tipopingu = pingu.pinguAzar();
                     // Muestra un dibujo ASCII del pingüino
                     System.out.println("         /~~~~~~\\\r\n" + //
-                                                "       /`    -s- ~~~~\\\r\n" + //
-                                                "      /`::::      ~~~~\r\n" + //
-                                                "     /`:::::     :\r\n" + //
-                                                "    /` :::::...::::\r\n" + //
-                                                "   /`   `:::::::::::\r\n" + //
-                                                "  /`      `:::::::::\r\n" + //
-                                                " /`        :::::::::\r\n" + //
-                                                " :        ::::::::::\r\n" + //
-                                                " :       :::::::::::\r\n" + //
-                                                " :       :::::::::::\r\n" + //
-                                                " :   .    ::::::::::\r\n" + //
-                                                " :   :.   ::::::::'\r\n" + //
-                                                " :   ::  .:::::::'\r\n" + //
-                                                " :   ::..:::::::'\r\n" + //
-                                                " :    :::::::::'\r\n" + //
-                                                "  :    :::::::::\r\n" + //
-                                                "   :..::......::\r\n" + //
-                                                "||||||||||||||||||||||||||");
-
+                            "       /`    -s- ~~~~\\\r\n" + //
+                            "      /`::::      ~~~~\r\n" + //
+                            "     /`:::::     :\r\n" + //
+                            "    /` :::::...::::\r\n" + //
+                            "   /`   `:::::::::::\r\n" + //
+                            "  /`      `:::::::::\r\n" + //
+                            " /`        :::::::::\r\n" + //
+                            " :        ::::::::::\r\n" + //
+                            " :       :::::::::::\r\n" + //
+                            " :       :::::::::::\r\n" + //
+                            " :   .    ::::::::::\r\n" + //
+                            " :   :.   ::::::::'\r\n" + //
+                            " :   ::  .:::::::'\r\n" + //
+                            " :   ::..:::::::'\r\n" + //
+                            " :    :::::::::'\r\n" + //
+                            "  :    :::::::::\r\n" + //
+                            "   :..::......::\r\n" + //
+                            "||||||||||||||||||||||||||");
+                    System.out.println("--------------------------------------------------------------------------");
                     // Menú para elegir si huir o atacar al pingüino que le ataca
                     System.out.println("¡¡Te has encontrado con un " + tipopingu + " mutante!!");
                     System.out.println("¿Qué quieres hacer? \n 1. Huir. \n 2. Luchar. \n 3. Atrapar.");
                     eleccion = sc.nextInt();
 
                     // Opción a escoger para que el jugador elija entre huir o luchar
+                    System.out.println("--------------------------------------------------------------------------");
                     switch (eleccion) {
                         case 1: // Si decide huir llamamos al método huir de la clase Explorador y le restamos
                                 // salud por huir
@@ -150,16 +121,20 @@ public class Juego {
                             break;
                         case 2: // Si decide atacar llamamos al método pelearPingu de la clase Explorador para
                                 // sacar aleatoriamente si gana o pierde
-                            System.out.println("Has decidico luchar. Era un " + tipopingu);
+                            System.out.println("Has decidido luchar con un " + tipopingu);
 
-                            System.out.println("SALUD:" + explorer.getSalud());
+                            System.out.println("SALUD ACTUAL:" + explorer.getSalud());
                             if (explorer.pelearPingu(tipopingu) == 1) { // Si gana, avisamos al usuario y sumamos 1 a
                                                                         // los pingüinos derrotados y sumamos la salud
                                                                         // acorde al pingüino derrotado
-                                System.out.println("¡Has ganado!");
+
                                 explorer.saludVictoria();
-                                System.out.println("Tienes " + explorer.getSalud() + " puntos de vida.");
-                                pingu.addVencido();
+                                System.out.println(
+                                        "¡Has ganado!, ahora tienes " + explorer.getSalud() + " puntos de vida.");
+                                System.out.println();
+
+                                pingu.addVencido(); // Añadimos 1 al contador de pingüinos vencidos
+
                                 if (pingu.soltarHuevoMagico()) { // Si suelta un huevo mágico termina el juego
                                                                  // directamente
                                     System.out.println(
@@ -167,33 +142,35 @@ public class Juego {
                                     fin = true;
                                 }
 
-                                System.out.println("¡Enhorabuena! Has logrado salir con vida.");
-
                             } else { // Si pierde, avisamos al usuario y le restamos la vida que le ha quitado el
                                      // pingüino
-                                System.out.println("¡Has perdido la batalla!");
                                 explorer.saludDerrota();
+                                System.out.println("¡Has perdido la batalla!");
+
                                 if (explorer.getSalud() > 0) {
                                     System.out.println("Ahora tienes " + explorer.getSalud() + " puntos de vida.");
+                                    System.out.println();
                                 } else {
-                                    System.out.println("Has sido asesinado por un pingüino");
+                                    System.out.println("Has sido asesinado por un pingüino :C");
                                 }
                             }
                             break;
                         case 3:
                             System.out.println("Has decidido atrapar al pingüino. Va a ser difícil...");
-                            int atrapado = pingu.atraparPingu(tipopingu);
-                            if (atrapado == 0) {
-                                System.out.println("No has podido atraparlo, ahora debes luchar con el...");
-                                System.out.println("SALUD:" + explorer.getSalud());
+
+                            if (pingu.atraparPingu(tipopingu) == 0) {
+                                System.out.println("No has podido atraparlo, ahora debes luchar...");
+                                System.out.println("SALUD ACTUAL:" + explorer.getSalud());
                                 if (explorer.pelearPingu(tipopingu) == 1) { // Si gana, avisamos al usuario y sumamos 1
                                                                             // a
                                                                             // los pingüinos derrotados y sumamos la
                                                                             // salud
                                                                             // acorde al pingüino derrotado
-                                    System.out.println("¡Has ganado!");
                                     explorer.saludVictoria();
-                                    System.out.println("Tienes " + explorer.getSalud() + " puntos de vida.");
+                                    System.out.println(
+                                            "¡Has ganado!, ahora tienes " + explorer.getSalud() + " puntos de vida.");
+                                    System.out.println();
+
                                     pingu.addVencido();
                                     if (pingu.soltarHuevoMagico()) { // Si suelta un huevo mágico termina el juego
                                                                      // directamente
@@ -202,12 +179,11 @@ public class Juego {
                                         fin = true;
                                     }
 
-                                    System.out.println("¡Enhorabuena! Has logrado salir con vida.");
-
                                 } else { // Si pierde, avisamos al usuario y le restamos la vida que le ha quitado el
                                          // pingüino
-                                    System.out.println("¡Has perdido la batalla!");
                                     explorer.saludDerrota();
+                                    System.out.println("¡Has perdido la batalla!");
+
                                     if (explorer.getSalud() > 0) {
                                         System.out.println("Ahora tienes " + explorer.getSalud() + " puntos de vida.");
                                     } else {
@@ -217,7 +193,7 @@ public class Juego {
                             } else if (pingu.atraparPingu(tipopingu) == 1) {
                                 if (pingu.cantAtrapados >= 1) {
                                     System.out.println(
-                                            "No puedes atrapar más pingüinos, ya tienes un pingüino atrapado :v");
+                                            "No puedes atrapar más pingüinos, ya tienes un pingüino en el saco.");
                                 } else {
                                     System.out.println("Has atrapado un pingüino, bien hecho!!");
                                 }
@@ -226,12 +202,12 @@ public class Juego {
                             break;
                         default: // Si elige otra opción que no sea huir o luchar, avisamos al usuario de que esa
                                  // opción no es válida
-                            System.out.println("Esa opción no esta en tus planes.");
+                            System.out.println("Esa opción no esta en tus planes..");
                             break;
                     }
 
                     correcto = true;
-
+                    System.out.println("--------------------------------------------------------------------------");
                     // Si el jugador pierde todos los puntos de vida, muere y acaba el juego
                     if (explorer.getSalud() <= 0) {
                         fin = true;
@@ -243,8 +219,10 @@ public class Juego {
                     }
                 }
             } catch (Exception e) {
-                System.out.println("Error al introducir el valor");
+                System.out.println("Error al introducir el valor correcto");
             }
+            
+            sc.nextLine();
         } while (!fin);
 
         sc.close();
