@@ -78,7 +78,7 @@ public class FigurasGeometricas {
             try {
                 f = sc.nextInt();
             } catch (Exception e) {
-                // TODO: handle exception
+                System.out.println("Error al introducir el valor correcto");
             }
     
             if (f == 1) {
