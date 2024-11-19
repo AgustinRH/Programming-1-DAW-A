@@ -52,10 +52,30 @@ public class Carta {
             this.palo = palo;
         }
 
-        //Baraja española
-        if (palo.equals("BASTOS") || palo.equals("OROS")||palo.equals("ESPADAS") ||palo.equals("COPAS")) {
+        // Baraja española
+        if (palo.equals("BASTOS") || palo.equals("OROS") || palo.equals("ESPADAS") || palo.equals("COPAS")) {
             this.palo = palo;
         }
     }
 
+    public String toString() {
+        return "Valor" + valor + " | " + "Palo: " + palo;
+    }
+
+    public boolean equals(Carta c) {
+        boolean iguales = false;
+        if (c.getValor().equals(this.valor) || c.getPalo().equals(this.palo)) {
+            iguales = true;
+        }
+        return iguales;
+    }
+
+    public Carta clone(){
+        Carta c = new Carta(this.valor, this.palo, this.tipo);
+        return c;
+    }
+
+    public void compararPalos(Carta c){
+        
+    }
 }
