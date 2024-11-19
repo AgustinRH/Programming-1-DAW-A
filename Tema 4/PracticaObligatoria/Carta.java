@@ -1,28 +1,30 @@
 package PracticaObligatoria;
 
 public class Carta {
-    private int valor;
-    private int palo;
-    private int tipo;
+    private int valor = -1;
+    private String palo = "nulo";
 
-    public Carta(int valor, int palo, int tipo){
+    public Carta(int valor, String palo){
         this.valor = valor;
         this.palo = palo;
-        this.tipo = tipo;
     }
     public int getValor() {
         return valor;
     }
 
-    public void setValor() {
-        
+    
+    public void setValor(int valor) {
+        if (valor > 0 && valor < 13) {
+            this.valor = valor;
+        } 
     }
 
-    public int getPalo() {
+    public String getPalo() {
         return palo;
     }
 
-    public int getTipo() {
-        return tipo;
+    public void setPalo (String palo) {
+            this.palo = palo;
     }
+
 }
