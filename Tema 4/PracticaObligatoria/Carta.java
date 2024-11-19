@@ -10,6 +10,19 @@ public class Carta {
         this.palo = palo;
         this.tipo = tipo;
     }
+    public int getValor() {
+        return valor;
+    }
 
+    public void setValor() {
+        
+    }
 
+    public int getPalo() {
+        return palo;
+    }
+
+    public int getTipo() {
+        return tipo;
+    }
 }
