@@ -14,13 +14,13 @@ public class Baraja {
                     palo = "BASTOS";
                 }
                 if (i == 1) {
-                    palo = "COPAS";
-                }
-                if (i == 2) {
                     palo = "OROS";
                 }
-                if (i == 3) {
+                if (i == 2) {
                     palo = "ESPADAS";
+                }
+                if (i == 3) {
+                    palo = "COPAS";
                 }
                 for (int j = 0; j < mazo[0].length; j++) {
                     switch (j) {
@@ -66,16 +66,16 @@ public class Baraja {
             Carta mazo[][] = new Carta[4][13];
             for (int i = 0; i < mazo.length; i++) {
                 if (i == 0) {
-                    palo = "BASTOS";
+                    palo = "CORAZONES";
                 }
                 if (i == 1) {
-                    palo = "COPAS";
+                    palo = "DIAMANTES";
                 }
                 if (i == 2) {
-                    palo = "OROS";
+                    palo = "PICAS";
                 }
                 if (i == 3) {
-                    palo = "ESPADAS";
+                    palo = "TREBOLES";
                 }
                 for (int j = 0; j < mazo[0].length; j++) {
                     switch (j) {
@@ -137,9 +137,6 @@ public class Baraja {
     }
 
     public void barajar() {
-        int cambiar = (int)(Math.random()*mazo.length + 1);
-        
-
-
+        int cambiar = (int)(Math.random()*mazo[0].length + 1);
     }
 }
