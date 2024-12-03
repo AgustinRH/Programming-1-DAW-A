@@ -3,11 +3,11 @@ package PracticaObligatoria;
 public class Carta {
 
     // Variables privadas de la clase.
-    private String valor, palo;
-    private int tipo;
+    private String palo;
+    private int tipo, valor;
 
     // Constructor de la clase para dar valor a las variables.
-    public Carta(String valor, String palo, int tipo) {
+    public Carta(int valor, String palo, int tipo) {
         this.valor = valor;
         this.palo = palo;
         this.tipo = tipo;
@@ -24,29 +24,13 @@ public class Carta {
     }
 
     // Getter de Valor
-    public String getValor() {
+    public int getValor() {
         return valor;
     }
 
     // Setter de Valor
-    public void setValor(String valor, int tipo) {
-        String valoresValidos;
-
-        // Si el tipo es Baraja Española
-        if (tipo == 1) {
-            valoresValidos = "1234567SCR";
-            if (valoresValidos.contains(valor)) {
-                this.valor = valor;
-            }
-        }
-
-        // Si el tipo es Baraja de Poker
-        if (tipo == 2) {
-            valoresValidos = "A23456789JQK";
-            if (valoresValidos.contains(valor) || valor.equals("10")) {
-                this.valor = valor;
-            }
-        }
+    public void setValor(int valor) {
+        this.valor = valor;
     }
 
     // Getter de Palo
@@ -69,13 +53,13 @@ public class Carta {
 
     // Devuelve un String del valor y el palo de la carta.
     public String toString() {
-        return "Valor" + valor + " | " + "Palo: " + palo;
+        return valor + " de " + palo;
     }
 
     // Método para comparar cartas
     public boolean equals(Carta c) {
         boolean iguales = false;
-        if (c.getValor().equals(this.valor) && c.getPalo().equals(this.palo)) {
+        if (c.getValor() == this.valor && c.getPalo().equals(this.palo)) {
             iguales = true;
         }
         return iguales;
@@ -89,7 +73,7 @@ public class Carta {
 
     // Método para comparar números de cartas
     public boolean compararNumeros(Carta c) {
-        return this.valor.equals(c.valor);
+        return this.valor == c.valor;
     }
 
     // Método para comparar palos de cartas
@@ -100,7 +84,7 @@ public class Carta {
     // Método para saber si una carta es mayor que otra
     public boolean mayorQue(Carta c) {
         boolean mayor = false;
-        if (this.valor.compareTo(c.getValor()) > 0) {
+        if (this.valor > c.getValor()) {
             mayor = true;
         }
         return mayor;

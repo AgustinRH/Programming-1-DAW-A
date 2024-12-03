@@ -9,43 +9,59 @@ public class Menu {
         boolean salir = false;
         int opc = -1;
 
-        while (!salir) {
-            System.out.println("MENÚ PRINCIPAL");
-            System.out.print("---------------");
-            System.out.print(
-                    "\n 1. Crear baraja \n 2. Mostrar baraja. \n 3. Sacar una carta \n 4. Barajar \n 5. Jugar \n 0. Salir del juego...");
-            System.out.println("\n Selecciona una opción: ");
-            try {
-                opc = sc.nextInt();
-            } catch (Exception e) {
-                System.out.println("Error al elegir la opción disponible.");
-            }
+        Baraja b = new Baraja(1);
 
-            switch (opc) {
-                case 1:
+        b.barajar();
+        b.mostrarBaraja();
 
-                    break;
-                case 2:
+        System.out.println("-----------------");
 
-                    break;
-                case 3:
+        b.reiniciar();
 
-                    break;
-                case 4:
+        b.mostrarBaraja();
+        System.out.println("-----------------");
+        System.out.println(b.toString());
 
-                    break;
-                case 5:
-
-                    break;
-                case 0:
-                    System.out.println("Saliendo...");
-                    salir = true;
-                    break;
-                default:
-                    System.out.println("Error al elegir la opción correcta...");
-                    break;
-            }
-        }
+        /*
+         * while (!salir) {
+         * System.out.println("MENÚ PRINCIPAL");
+         * System.out.print("---------------");
+         * System.out.print(
+         * "\n 1. Crear baraja \n 2. Mostrar baraja. \n 3. Sacar una carta \n 4. Barajar \n 5. Jugar \n 0. Salir del juego..."
+         * );
+         * System.out.println("\n Selecciona una opción: ");
+         * try {
+         * opc = sc.nextInt();
+         * } catch (Exception e) {
+         * System.out.println("Error al elegir la opción disponible.");
+         * }
+         * 
+         * switch (opc) {
+         * case 1:
+         * 
+         * break;
+         * case 2:
+         * 
+         * break;
+         * case 3:
+         * 
+         * break;
+         * case 4:
+         * 
+         * break;
+         * case 5:
+         * 
+         * break;
+         * case 0:
+         * System.out.println("Saliendo...");
+         * salir = true;
+         * break;
+         * default:
+         * System.out.println("Error al elegir la opción correcta...");
+         * break;
+         * }
+         * }
+         */
 
         sc.close();
     }
