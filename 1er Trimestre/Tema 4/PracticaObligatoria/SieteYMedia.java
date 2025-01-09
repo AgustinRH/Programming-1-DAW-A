@@ -26,6 +26,7 @@ public class SieteYMedia {
             } catch (Exception e) {
                 System.out.println("Error al introducir el valor de jugadores");
                 // TODO: handle exception
+                sc.nextLine();
             }
 
             System.out.println("Recuarda... Mínimo 2 personas para jugar");
