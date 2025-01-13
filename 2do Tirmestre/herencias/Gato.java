@@ -8,5 +8,4 @@ public class Gato extends Animal{
 
     public int getVidas(){ return this.vidas;}
     public void restarVidas(){ this.vidas = this.vidas - 1;}
-    // Patata
 }
