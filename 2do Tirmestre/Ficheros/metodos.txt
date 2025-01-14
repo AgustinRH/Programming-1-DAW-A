@@ -1,0 +1,27 @@
+- isDirectory(): Verifica si el archivo es un directorio.
+
+- isFile(): Verifica si el archivo es un archivo regular.
+
+- exists(): Verifica si el archivo o directorio existe.
+
+- createNewFile(): Crea un nuevo archivo vacío en el sistema de archivos si no existe ya.
+
+- delete(): Elimina el archivo o directorio.
+
+- renameTo(File dest): Cambia el nombre del archivo o lo mueve a otro archivo o directorio.
+
+- canRead(): Verifica si el archivo es legible.
+
+- canWrite(): Verifica si el archivo es escribible.
+
+- getParent(): Obtiene el directorio padre del archivo.
+
+- length(): Devuelve el tamaño del archivo en bytes.
+
+- mkdir(): Crea un directorio vacío.
+
+- list(): Devuelve una lista de nombres de archivos y directorios dentro del directorio.
+
+- list(String filtro): Devuelve una lista de nombres de archivos y directorios dentro del directorio que coinciden con el filtro especificado.
+
+- listFiles(): Devuelve una lista de objetos File de los archivos y directorios dentro del directorio.
