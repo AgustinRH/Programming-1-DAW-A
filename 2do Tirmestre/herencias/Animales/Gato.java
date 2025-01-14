@@ -1,4 +1,4 @@
-package Animales;
+
 public class Gato extends Animal{
     private int vidas;
 
