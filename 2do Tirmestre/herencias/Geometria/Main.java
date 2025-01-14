@@ -18,7 +18,7 @@ public class Main {
         Circulo c = new Circulo(2, "Verde", true);
         System.out.println(c.toString());
         System.out.println();
-        System.out.println("-----------------------");
+        System.out.println("----------------------- \n");
 
         Cuadrado cuadrado = new Cuadrado(5.0);
         
@@ -34,5 +34,4 @@ public class Main {
         System.out.println("Después de cambiar el ancho:");
         System.out.println(cuadrado.toString());
     }   
-
 }
