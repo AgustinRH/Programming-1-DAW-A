@@ -35,6 +35,7 @@ public class ContarLetras {
             System.out.println("Letra\tNúm. de veces que aparece\tFrecuencia (%)");
             System.out.println("------------------------------------------------------------");
 
+            // Bucle para calcular el porcentaje de de aparición de las letras
             for (int i = 0; i < frecuencia.length; i++) {
                 char letra = (char) (i + 'a');
                 double porcentaje;
@@ -44,7 +45,7 @@ public class ContarLetras {
                 } else {
                     porcentaje = 0;
                 }
-
+                
                 System.out.printf("%c\t%d\t\t\t\t%.2f %%\n", letra, frecuencia[i], porcentaje);
             }
 
