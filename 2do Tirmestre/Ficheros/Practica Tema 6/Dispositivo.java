@@ -4,25 +4,14 @@ public class Dispositivo {
     protected int id;
     protected String marca, modelo;
     protected boolean estado;
-    private final int TAM_REG = 49;
+    private final int TAM_REG = 205;
     private final int MAX_STRING_LENGTH = 100;
 
     public Dispositivo(String marca, String modelo, boolean estado) {
+        this.id = generarId();
         this.marca = marca;
         this.modelo = modelo;
         this.estado = estado;
-        try {
-            RandomAccessFile raf = new RandomAccessFile("dispositivos.dat", "r");
-
-            raf.seek(raf.length() - TAM_REG);
-            int ultimoId = raf.readInt();
-            this.id = ultimoId;
-            raf.close();
-
-        } catch (Exception e) {
-            this.id = 0;
-            e.getMessage();
-        }
     }
 
     public Dispositivo(int id) {
@@ -30,6 +19,28 @@ public class Dispositivo {
         this.marca = "";
         this.modelo = "";
         this.estado = true;
+    }
+
+    public int generarId() {
+        try {
+            RandomAccessFile raf = new RandomAccessFile("dispositivos.dat", "r");
+            int id = 0;
+    
+            while (raf.getFilePointer() < raf.length()) {
+                int currentId = raf.readInt();
+                
+                raf.seek(raf.getFilePointer() + TAM_REG - 4);
+                if (currentId > id) {
+                    id = currentId; 
+                }
+            }
+    
+            raf.close();
+            return id + 1;
+        } catch (Exception e) {
+            e.printStackTrace(); 
+            return -1; 
+        }
     }
 
     public int getId() {
@@ -71,7 +82,7 @@ public class Dispositivo {
         } else {
             est = "no funciona";
         }
-        return "Marca: " + this.marca + ". Modelo: " + this.modelo + ". Estado: " + est + ".";
+        return "ID: " + this.id + ". Marca: " + this.marca + ". Modelo: " + this.modelo + ". Estado: " + est + ".";
     }
 
     protected void escribirString(RandomAccessFile raf, String str) throws Exception{
@@ -83,7 +94,6 @@ public class Dispositivo {
         for (int i = 0; i < MAX_STRING_LENGTH - bytesEscritos; i++) {
             raf.writeByte(0);
         }
-        raf.close();
     }
 
     public int save() {
