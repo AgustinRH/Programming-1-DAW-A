@@ -1,3 +1,4 @@
+import java.io.File;
 import java.io.RandomAccessFile;
 
 public class Dispositivo {
@@ -12,6 +13,7 @@ public class Dispositivo {
         this.marca = marca;
         this.modelo = modelo;
         this.estado = estado;
+        save();
     }
 
     public Dispositivo(int id) {
@@ -23,23 +25,21 @@ public class Dispositivo {
 
     public int generarId() {
         try {
-            RandomAccessFile raf = new RandomAccessFile("dispositivos.dat", "r");
-            int id = 0;
-    
-            while (raf.getFilePointer() < raf.length()) {
-                int currentId = raf.readInt();
-                
-                raf.seek(raf.getFilePointer() + TAM_REG - 4);
-                if (currentId > id) {
-                    id = currentId; 
-                }
+            File f = new File("dispositivos.dat");
+            int id = 1;
+            if (f.exists()) {
+                RandomAccessFile raf = new RandomAccessFile("dispositivos.dat", "r");
+
+                raf.seek(raf.length() - TAM_REG);
+                id = raf.readInt() + 1;
+
+                raf.close();
             }
-    
-            raf.close();
-            return id + 1;
+            return id;
         } catch (Exception e) {
-            e.printStackTrace(); 
-            return -1; 
+            e.printStackTrace();
+            e.getMessage();
+            return -1;
         }
     }
 
@@ -85,7 +85,7 @@ public class Dispositivo {
         return "ID: " + this.id + ". Marca: " + this.marca + ". Modelo: " + this.modelo + ". Estado: " + est + ".";
     }
 
-    protected void escribirString(RandomAccessFile raf, String str) throws Exception{
+    protected void escribirString(RandomAccessFile raf, String str) throws Exception {
         long posIni = raf.getFilePointer();
         raf.writeUTF(str);
         long posFin = raf.getFilePointer();
@@ -112,7 +112,7 @@ public class Dispositivo {
 
             raf.close();
             return 0;
-        } catch (Exception e) {     
+        } catch (Exception e) {
             e.getMessage();
             return 1;
         }
@@ -125,10 +125,10 @@ public class Dispositivo {
         return str;
     }
 
-    public int load(){
+    public int load() {
         try {
             RandomAccessFile raf = new RandomAccessFile("dispositivos.dat", "r");
-            raf.seek(this.id*205);
+            raf.seek(this.id * 205);
             raf.readInt();
             this.marca = leerString(raf);
             this.modelo = leerString(raf);
@@ -142,8 +142,8 @@ public class Dispositivo {
 
     public void delete() {
         try {
-            RandomAccessFile raf = new RandomAccessFile("dispositivos.dat","rw");
-            raf.seek(this.id*205);
+            RandomAccessFile raf = new RandomAccessFile("dispositivos.dat", "rw");
+            raf.seek(this.id * 205);
             raf.seek(204);
             raf.seek(4);
             escribirString(raf, "BORRADO");

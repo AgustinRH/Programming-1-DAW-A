@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-   /* private ArrayList<Dispositivo> listaDispositivos;
+    // private ArrayList<Dispositivo> listaDispositivos;
     private Scanner sc;
 
     public Main() {
         sc = new Scanner(System.in);
-        listaDispositivos = new ArrayList<>();
+        // listaDispositivos = new ArrayList<>();
         
     }
 
@@ -61,27 +61,8 @@ public class Main {
             }
         } while (option != 0);
     }
- */
 
-    public static void main (String[] args) {
-         // Dispositivo d = new Dispositivo("ASus", "PT3", true);
-        Dispositivo d = new Dispositivo("Honor", "Magicbook16", true);
-        Dispositivo d2 = new Dispositivo("ASus", "Vivobook", true);
-        Dispositivo d3 = new Dispositivo("Acer", "Aspire", true);
-        Dispositivo d4 = new Dispositivo("Google", "Interbook", true);
-
-        System.out.println(d.toString());
-        System.out.println(d2.toString());
-        
-        System.out.println(d3.toString());
-        System.out.println(d4.toString());
-        d.save();
-        d2.save();
-        d3.save();
-        d4.save();
-    
-        d3.delete();
-        System.out.println(d3.getId());
+    public void anadirDispositivo(){
+        System.out.println("");
     }
-
 }
