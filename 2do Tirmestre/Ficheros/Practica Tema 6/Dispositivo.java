@@ -107,6 +107,7 @@ public class Dispositivo {
 
             escribirString(raf, marca);
             escribirString(raf, modelo);
+            System.out.println(this.estado);
 
             raf.writeBoolean(this.estado);
 
