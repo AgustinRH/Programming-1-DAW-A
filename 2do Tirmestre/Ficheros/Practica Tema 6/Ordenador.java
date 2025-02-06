@@ -19,6 +19,14 @@ public class Ordenador extends Dispositivo {
         super.setIdAjeno(this.id);
     }
 
+    public Ordenador(int id) {
+        super(id);
+        this.ram = 0;
+        this.procesador = "";
+        this.tamDiscoDuroGB = 0;
+        this.tipoDisco = 0;
+    }
+
     public int generarIdOrdenador() {
         try {
             File f = new File("ordenadores.dat");
@@ -37,14 +45,6 @@ public class Ordenador extends Dispositivo {
             e.getMessage();
             return -1;
         }
-    }
-
-    public Ordenador(int id) {
-        super(id);
-        this.ram = 0;
-        this.procesador = "";
-        this.tamDiscoDuroGB = 0;
-        this.tipoDisco = 0;
     }
 
     public int getRam() {

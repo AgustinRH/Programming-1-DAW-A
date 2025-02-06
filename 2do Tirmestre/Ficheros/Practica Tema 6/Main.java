@@ -91,6 +91,42 @@ public class Main {
 
         Dispositivo d = new Dispositivo(marca, modelo, estado);
 
+        System.out.println("¿Qué tipo de dispositivo es? \n1. Dispositivo. \n2. Ordenador. \n3. Impresora.");
+
+        d.setTipo(sc.nextInt());
+
+        switch (d.tipo) {
+            case 1:
+                System.out.println("¡Dispositivo creado correctamente!");
+                break;
+            case 2:
+                System.out.println("Dime la RAM:");
+                int ram = sc.nextInt();
+                System.out.println("Procesador: ");
+                String procesador = sc.next();
+                System.out.println("Dime el tamaño del Disco Duro: ");
+                int tamDisco = sc.nextInt();
+                System.out.println("Tipo Disco Duro: ");
+                int tipoDisco = sc.nextInt();
+
+
+                Ordenador ord = new Ordenador(d.marca, d.modelo, d.estado, ram, procesador, tamDisco, tipoDisco);
+
+                d.setIdAjeno(ord.getId());
+
+                ord.save();
+                ord.load();
+                break;
+            case 3:
+
+                
+                break;
+            default:
+                break;
+        }
+        
+
+
         d.load();
         System.out.println(d.toString());
     }
