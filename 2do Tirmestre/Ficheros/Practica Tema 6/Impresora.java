@@ -1,19 +1,41 @@
+import java.io.File;
 import java.io.RandomAccessFile;
-import java.util.Random;
 
 public class Impresora extends Dispositivo {
-    private int tipo;
+    private int tipo, idImpresora;
     private boolean color;
     private boolean scanner;
-    private final int MAX_STRING_LENGTH = 100;
     private final int tamLinea = 211;
 
     public Impresora(String marca, String modelo, boolean estado, int tipo, boolean color, boolean scanner) {
         super(marca, modelo, estado);
+        this.idImpresora = generarIdImpresora();
         this.tipo = tipo;
         this.color = color;
         this.scanner = scanner;
+        id_ajeno = idImpresora;
     }
+
+    public int generarIdImpresora() {
+        try {
+            File f = new File("impresoras.dat");
+            int id = 0;
+            if (f.exists()) {
+                RandomAccessFile raf = new RandomAccessFile("impresoras.dat", "r");
+
+                raf.seek(raf.length() - tamLinea);
+                id = raf.readInt() + 1;
+
+                raf.close();
+            }
+            return id;
+        } catch (Exception e) {
+            e.printStackTrace();
+            e.getMessage();
+            return -1;
+        }
+    }
+
 
     public Impresora(int id) {
         super(id);
@@ -67,7 +89,8 @@ public class Impresora extends Dispositivo {
         String scannerString = scanner ? "Incluido" : "No incluido";
         String estadoString = super.estado ? "funciona" : "no funciona";
 
-        return "Marca: " + super.marca +
+        return  "ID: " + idImpresora +
+                ". Marca: " + super.marca +
                 ". Modelo: " + super.modelo +
                 ". Estado: " + estadoString +
                 ". tipo: " + tipoString +
@@ -76,14 +99,12 @@ public class Impresora extends Dispositivo {
     }
 
     public int save() {
+        super.save(); // Guardamos los datos del dispositivo
         try {
             RandomAccessFile raf = new RandomAccessFile("impresoras.dat", "rw");
             raf.seek(raf.length());
 
-            raf.writeInt(super.getId());
-            super.escribirString(raf, super.getMarca());
-            super.escribirString(raf, super.getModelo());
-            raf.writeBoolean(super.estado());
+            raf.writeInt(this.idImpresora);
             raf.writeInt(this.tipo);
             raf.writeBoolean(color);
             raf.writeBoolean(scanner);
@@ -97,14 +118,10 @@ public class Impresora extends Dispositivo {
     }
 
     public int load() {
+        super.load(); 
         try {
             RandomAccessFile raf = new RandomAccessFile("imprepsoras.dat", "r");
-            raf.seek(super.getId() * tamLinea); 
 
-            super.id = raf.readInt();
-            super.setMarca(super.leerString(raf));
-            super.setModelo(super.leerString(raf));
-            super.setEstado(raf.readBoolean());
             this.tipo = raf.readInt();
             this.color = raf.readBoolean();
             this.scanner = raf.readBoolean();

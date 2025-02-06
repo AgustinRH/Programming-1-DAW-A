@@ -1,4 +1,4 @@
-import java.io.IOException;
+import java.io.File;
 import java.io.RandomAccessFile;
 
 public class Ordenador extends Dispositivo {
@@ -6,16 +6,37 @@ public class Ordenador extends Dispositivo {
     private String procesador;
     private int tamDiscoDuroGB;
     private int tipoDisco;
-    private final int MAX_STRING_LENGTH = 100;
     private final int tamLinea = 317;
 
     public Ordenador(String marca, String modelo, boolean estado, int ram, String procesador, int tamDiscoDuroGB,
             int tipoDisco) {
         super(marca, modelo, estado);
+        this.id = generarIdOrdenador();
         this.ram = ram;
         this.procesador = procesador;
         this.tamDiscoDuroGB = tamDiscoDuroGB;
         this.tipoDisco = tipoDisco;
+        super.setIdAjeno(this.id);
+    }
+
+    public int generarIdOrdenador() {
+        try {
+            File f = new File("ordenadores.dat");
+            int id = 0;
+            if (f.exists()) {
+                RandomAccessFile raf = new RandomAccessFile("ordenadores.dat", "r");
+
+                raf.seek(raf.length() - tamLinea);
+                id = raf.readInt() + 1;
+
+                raf.close();
+            }
+            return id;
+        } catch (Exception e) {
+            e.printStackTrace();
+            e.getMessage();
+            return -1;
+        }
     }
 
     public Ordenador(int id) {
@@ -88,8 +109,6 @@ public class Ordenador extends Dispositivo {
                 ". Almacenamiento: " + tipoDiscoString + " " + tamDiscoDuroGB + " GB.";
     }
 
-    
-
     public int save() { // Cada línea ocupa 317 bytes
         try {
             RandomAccessFile raf = new RandomAccessFile("ordenadores.dat", "rw");
@@ -112,7 +131,6 @@ public class Ordenador extends Dispositivo {
             return 1;
         }
     }
-
 
     public int load() {
         try {

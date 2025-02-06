@@ -2,20 +2,27 @@ import java.io.File;
 import java.io.RandomAccessFile;
 
 public class Dispositivo {
-    protected int id;
+
+    // Variables de la clase
+    protected int id, tipo;
+    protected int id_ajeno;
     protected String marca, modelo;
-    protected boolean estado;
-    private final int TAM_REG = 205;
+    protected boolean estado, borrado;
+    private final int TAM_REG = 214;
     private final int MAX_STRING_LENGTH = 100;
 
+    // Contructor que recibe marca, modelo y estado y guarda el dispositivo llamando al método save().
     public Dispositivo(String marca, String modelo, boolean estado) {
         this.id = generarId();
         this.marca = marca;
         this.modelo = modelo;
         this.estado = estado;
+        this.borrado = false;
+         
         save();
     }
 
+    // Constructor que recibe un id e inicializa todo vacío.
     public Dispositivo(int id) {
         this.id = id;
         this.marca = "";
@@ -23,10 +30,12 @@ public class Dispositivo {
         this.estado = true;
     }
 
+
+    // Método para generar el ID
     public int generarId() {
         try {
             File f = new File("dispositivos.dat");
-            int id = 1;
+            int id = 0;
             if (f.exists()) {
                 RandomAccessFile raf = new RandomAccessFile("dispositivos.dat", "r");
 
@@ -43,10 +52,13 @@ public class Dispositivo {
         }
     }
 
+    // Getter de Id
     public int getId() {
         return this.id;
     }
 
+
+    // Setter de Marca
     public void setMarca(String m) {
         this.marca = m;
     }
@@ -75,6 +87,30 @@ public class Dispositivo {
         this.estado = e;
     }
 
+    public boolean borrado() {
+        return this.borrado;
+    }
+
+    public void setBorrado(boolean b) {
+        this.borrado = b;
+    }
+
+    public int getTipo() {
+        return this.tipo;
+    }
+
+    public void setTipo(int t) {
+        this.tipo = t;
+    }
+
+    public int getIdAjeno() {
+        return id_ajeno;
+    }
+
+    public void setIdAjeno(int id) {
+        this.id_ajeno = id;
+    }
+
     public String toString() {
         String est;
         if (estado) {
@@ -85,13 +121,15 @@ public class Dispositivo {
         return "ID: " + this.id + ". Marca: " + this.marca + ". Modelo: " + this.modelo + ". Estado: " + est + ".";
     }
 
-    protected void escribirString(RandomAccessFile raf, String str) throws Exception {
-        long posIni = raf.getFilePointer();
-        raf.writeUTF(str);
-        long posFin = raf.getFilePointer();
-        long bytesEscritos = posFin - posIni;
 
-        for (int i = 0; i < MAX_STRING_LENGTH - bytesEscritos; i++) {
+    // Método para escribir un String dentro del registro
+    protected void escribirString(RandomAccessFile raf, String str) throws Exception {
+        long posIni = raf.getFilePointer(); // Guardamos la posición antes de escribir el String
+        raf.writeUTF(str); // Escribimos el String
+        long posFin = raf.getFilePointer(); // Volvemos a guardar la posición tras escribir el String
+        long bytesEscritos = posFin - posIni; // Restamos la posición final menos la inicial para obtener el tamaño del String escrito
+
+        for (int i = 0; i < MAX_STRING_LENGTH - bytesEscritos; i++) { // Bucle para escribir ceros desde el final del String hasta obtener un tamaño de 100
             raf.writeByte(0);
         }
     }
@@ -99,18 +137,16 @@ public class Dispositivo {
     public int save() {
         try {
             RandomAccessFile raf = new RandomAccessFile("dispositivos.dat", "rw");
+            long tamanioFichero = raf.length(); //
+            raf.seek(tamanioFichero);
 
-            long tamArchivo = raf.length();
-            raf.seek(tamArchivo);
-
-            raf.writeInt(this.id);
-
-            escribirString(raf, marca);
-            escribirString(raf, modelo);
-            System.out.println(this.estado);
-
-            raf.writeBoolean(this.estado);
-
+            raf.writeInt(this.id);  // ID 4
+            escribirString(raf, marca);  // MARCA 100
+            escribirString(raf, modelo); // MODELO 100
+            raf.writeBoolean(this.estado); // ESTADO 1
+            raf.writeInt(this.tipo); // TIPO 4
+            raf.writeBoolean(this.borrado);  // BORRADO 1
+            raf.writeInt(this.id_ajeno);  // ID_AJENA 4
             raf.close();
             return 0;
         } catch (Exception e) {
@@ -129,11 +165,14 @@ public class Dispositivo {
     public int load() {
         try {
             RandomAccessFile raf = new RandomAccessFile("dispositivos.dat", "r");
-            raf.seek(this.id * 205);
-            raf.readInt();
+            raf.seek(this.id * TAM_REG);
+            this.id = raf.readInt();
             this.marca = leerString(raf);
             this.modelo = leerString(raf);
             this.estado = raf.readBoolean();
+            this.tipo = raf.readInt();
+            this.borrado = raf.readBoolean();
+            this.id_ajeno = raf.readInt();
             raf.close();
             return 0;
         } catch (Exception e) {
@@ -144,15 +183,11 @@ public class Dispositivo {
     public void delete() {
         try {
             RandomAccessFile raf = new RandomAccessFile("dispositivos.dat", "rw");
-            raf.seek(this.id * 205);
-            raf.seek(204);
-            raf.seek(4);
-            escribirString(raf, "BORRADO");
-            escribirString(raf, "BORRADO");
+            raf.seek(this.id * TAM_REG + 209);
+            raf.writeBoolean(borrado);
             raf.close();
         } catch (Exception e) {
             e.getMessage();
         }
     }
-
 }

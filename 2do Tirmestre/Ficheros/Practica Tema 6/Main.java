@@ -11,24 +11,19 @@ public class Main {
         sc = new Scanner(System.in);
         listaDispositivos = new ArrayList<>();
     }
-
+    /* 
     public void cargarArraylist() {
         try {
             RandomAccessFile raf = new RandomAccessFile("dispositivos.dat", "r");
             while (raf.getFilePointer() < raf.length()) {
-                raf.seek(this.id * 205);
-                raf.readInt();
-                this.marca = leerString(raf);
-                this.modelo = leerString(raf);
-                this.estado = raf.readBoolean();
-                Dispositivo d = new Dispositivo(this.marca, this.modelo, this.estado);
-                listaDispositivos.add(d);
+                Dispositivo d = new Dispositivo(d.getMarca(), d.getModelo(), d.g)
+                listaDispositivos.add();
             }
         } catch (Exception e) {
-            // TODO: handle exception
             e.getMessage();
         }
     }
+    */
 
     public static void main(String[] args) {
         Main main = new Main();
@@ -107,23 +102,24 @@ public class Main {
     public void buscarDispositivo() {
         System.out.println("Dime el ID del dispsoitivo a buscar: ");
         int idBuscar = sc.nextInt();
-
-
+        Dispositivo d = new Dispositivo(idBuscar);
     }
 
     public void borrarDispositivo() {
         System.out.println("Dime el ID del dispsoitivo a borrar: ");
         int idBuscar = sc.nextInt();
-
+        Dispositivo d = new Dispositivo(idBuscar);
     }
 
     public void cambiarEstadoDispositivo() {
         System.out.println("Dime el ID del dispsoitivo a cambiar: ");
         int idBuscar = sc.nextInt();
+        Dispositivo d = new Dispositivo(idBuscar);
     }
 
     public void modificarDispositivo() {
         System.out.println("Dime el ID del dispsoitivo que deseas modificar: ");
         int idBuscar = sc.nextInt();
+        Dispositivo d = new Dispositivo(idBuscar);
     }
 }
