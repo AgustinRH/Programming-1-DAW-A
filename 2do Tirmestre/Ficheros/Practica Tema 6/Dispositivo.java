@@ -182,12 +182,27 @@ public class Dispositivo {
 
     public void delete() {
         try {
+            // Abrir el archivo en modo lectura y escritura
             RandomAccessFile raf = new RandomAccessFile("dispositivos.dat", "rw");
-            raf.seek(this.id * TAM_REG + 209);
-            raf.writeBoolean(borrado);
+    
+            // Buscar la posición del registro
+            raf.seek(this.id * TAM_REG);
+    
+            raf.readInt();  // Salta el ID
+            leerString(raf);  // Salta la marca
+            leerString(raf);  // Salta el modelo
+            raf.readBoolean();  // Salta el estado
+            raf.readInt();  // Salta el tipo
+            raf.readBoolean();  // Salta el valor borrado actual
+            raf.readInt();  // Salta el id ajeno
+    
+            // Ahora sobreescribimos el valor borrado en la posición correspondiente
+            raf.writeBoolean(true);  // Marcamos el dispositivo como borrado
+    
+            // Cerrar el archivo
             raf.close();
         } catch (Exception e) {
-            e.getMessage();
+            System.out.println("Error al marcar el dispositivo como borrado: " + e.getMessage());
         }
     }
 }

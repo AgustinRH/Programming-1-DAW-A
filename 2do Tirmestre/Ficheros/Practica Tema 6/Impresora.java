@@ -120,7 +120,7 @@ public class Impresora extends Dispositivo {
     public int load() {
         super.load(); 
         try {
-            RandomAccessFile raf = new RandomAccessFile("imprepsoras.dat", "r");
+            RandomAccessFile raf = new RandomAccessFile("impresoras.dat", "r");
 
             this.tipo = raf.readInt();
             this.color = raf.readBoolean();
