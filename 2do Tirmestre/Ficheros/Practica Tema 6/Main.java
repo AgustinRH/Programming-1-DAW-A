@@ -9,12 +9,11 @@ public class Main {
     private ArrayList<Dispositivo> listaDispositivos;
     private Scanner sc;
 
-    public Main() {
+    public Main() { // Constructor de la clase Main
         
-        sc = new Scanner(System.in);
-        listaDispositivos = new ArrayList<>();
+        sc = new Scanner(System.in); // Inicializamos Scanner
+        listaDispositivos = new ArrayList<>(); // Inicializamos 
         
-        System.out.println("Algos");
         cargarArraylist();
     }
 
@@ -30,22 +29,22 @@ public class Main {
             // Abrimos archivo dispositivos.dat
             raf = new RandomAccessFile("dispositivos.dat", "r");
 
-            while (raf.getFilePointer() < raf.length()) {
+            while (raf.getFilePointer() < raf.length()) { 
                 Dispositivo dispositivo = new Dispositivo(0);
-                dispositivo.load(); // Cargar los datos del dispositivo desde el archivo
+                dispositivo.load(); // Cargamos los datos del dispositivo desde el archivo
                 listaDispositivos.add(dispositivo);
             }
 
             raf.close();
         } catch (Exception e) {
-            e.printStackTrace();
+            e.getMessage();
         } finally {
             try {
                 if (raf != null) {
                     raf.close();
                 }
             } catch (Exception e) {
-                e.printStackTrace();
+                e.getMessage();
             }
         }
     }
@@ -129,7 +128,7 @@ public class Main {
                 System.out.println("Ingrese la RAM:");
                 int ram = sc.nextInt();
                 System.out.println("Procesador: ");
-                String procesador = sc.next();
+                String procesador = sc.nextLine();
                 System.out.println("Ingrese el tamaño del Disco Duro: ");
                 int tamDisco = sc.nextInt();
                 System.out.println("Ingrese el tipo Disco Duro: ");
