@@ -11,7 +11,8 @@ public class Dispositivo {
     private final int TAM_REG = 214;
     private final int MAX_STRING_LENGTH = 100;
 
-    // Contructor que recibe marca, modelo y estado y guarda el dispositivo llamando al método save().
+    // Contructor que recibe marca, modelo y estado y guarda el dispositivo llamando
+    // al método save().
     public Dispositivo(String marca, String modelo, boolean estado) {
         this.id = generarId();
         this.marca = marca;
@@ -141,7 +142,8 @@ public class Dispositivo {
             default:
                 break;
         }
-        return "ID: " + this.id + ". Marca: " + this.marca + ". Modelo: " + this.modelo + ". Estado: " + est + ". Tipo: " + tipoString;
+        return "ID: " + this.id + ". Marca: " + this.marca + ". Modelo: " + this.modelo + ". Estado: " + est
+                + ". Tipo: " + tipoString + ". Id_ajeno: " + this.id_ajeno;
     }
 
     // Método para escribir un String dentro del registro
@@ -149,9 +151,11 @@ public class Dispositivo {
         long posIni = raf.getFilePointer(); // Guardamos la posición antes de escribir el String
         raf.writeUTF(str); // Escribimos el String
         long posFin = raf.getFilePointer(); // Volvemos a guardar la posición tras escribir el String
-        long bytesEscritos = posFin - posIni; // Restamos la posición final menos la inicial para obtener el tamaño del String escrito
+        long bytesEscritos = posFin - posIni; // Restamos la posición final menos la inicial para obtener el tamaño del
+                                              // String escrito
 
-        for (int i = 0; i < MAX_STRING_LENGTH - bytesEscritos; i++) { // Bucle para escribir ceros desde el final del String hasta obtener un tamaño de 100
+        for (int i = 0; i < MAX_STRING_LENGTH - bytesEscritos; i++) { // Bucle para escribir ceros desde el final del
+                                                                      // String hasta obtener un tamaño de 100
             raf.writeByte(0);
         }
     }
@@ -160,15 +164,15 @@ public class Dispositivo {
     public int save() {
         try {
             RandomAccessFile raf = new RandomAccessFile("dispositivos.dat", "rw");
-            long tamanioFichero = raf.length(); 
+            long tamanioFichero = raf.length();
             raf.seek(tamanioFichero);
-            raf.writeInt(this.id);  // ID 4
-            escribirString(raf, marca);  // MARCA 100
+            raf.writeInt(this.id); // ID 4
+            escribirString(raf, marca); // MARCA 100
             escribirString(raf, modelo); // MODELO 100
             raf.writeBoolean(this.estado); // ESTADO 1
             raf.writeInt(this.tipo); // TIPO 4
-            raf.writeBoolean(this.borrado);  // BORRADO 1
-            raf.writeInt(this.id_ajeno);  // ID_AJENA 4
+            raf.writeBoolean(this.borrado); // BORRADO 1
+            raf.writeInt(this.id_ajeno); // ID_AJENA 4
             raf.close();
             return 0;
         } catch (Exception e) {
@@ -212,15 +216,15 @@ public class Dispositivo {
             RandomAccessFile raf = new RandomAccessFile("dispositivos.dat", "rw");
             // Buscar la posición del registro
             raf.seek(this.id * TAM_REG);
-            raf.readInt();  // Salta el ID
-            leerString(raf);  // Salta la marca
-            leerString(raf);  // Salta el modelo
-            raf.readBoolean();  // Salta el estado
-            raf.readInt();  // Salta el tipo
-            raf.readBoolean();  // Salta el valor borrado actual
-            raf.readInt();  // Salta el id ajeno
+            raf.readInt(); // Salta el ID
+            leerString(raf); // Salta la marca
+            leerString(raf); // Salta el modelo
+            raf.readBoolean(); // Salta el estado
+            raf.readInt(); // Salta el tipo
+            raf.readBoolean(); // Salta el valor borrado actual
+            raf.readInt(); // Salta el id ajeno
             // Ahora sobreescribimos el valor borrado en la posición correspondiente
-            raf.writeBoolean(true);  // Marcamos el dispositivo como borrado
+            raf.writeBoolean(true); // Marcamos el dispositivo como borrado
             // Cerrar el archivo
             raf.close();
         } catch (Exception e) {

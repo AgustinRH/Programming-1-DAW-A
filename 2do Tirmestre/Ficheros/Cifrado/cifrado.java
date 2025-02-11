@@ -15,14 +15,17 @@ public class cifrado {
      */
     public void cifrar(String archivo, String cifrado) {
         try {
+            // Abre el archivo de entrada para lectura
             FileInputStream fis = new FileInputStream(archivo);
+            // Abre el archivo de salida para escritura
             FileOutputStream fos = new FileOutputStream(cifrado);
 
             int content;
+            // Lee el archivo de entrada byte por byte
             while ((content = fis.read()) != -1) {
                 char letra = (char) content;
 
-                // Incrementar el carácter
+                // Incrementa el carácter
                 if (letra == 'z') {
                     letra = 'a';
                 } else if (letra == 'Z') {
@@ -32,15 +35,20 @@ public class cifrado {
                 } else if (letra >= 'A' && letra < 'Z') {
                     letra++;
                 }
+                // Reemplaza los espacios por asteriscos
                 if (letra == ' ') {
                     letra = '*';
                 }
 
+                // Escribe el carácter cifrado en el archivo de salida
                 fos.write(letra);
-                fis.close();
-                fos.close();
             }
+            // Cierra el archivo de entrada
+            fis.close();
+            // Cierra el archivo de salida
+            fos.close();
         } catch (IOException e) {
+            // Maneja cualquier excepción de E/S
             System.out.println("Error al cifrar el archivo: " + e.getMessage());
         }
     }

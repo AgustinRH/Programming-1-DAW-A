@@ -8,7 +8,8 @@ public class Ordenador extends Dispositivo {
     private int tipoDisco;
     private final int tamLinea = 116;
 
-    // Constructor que recibe marca, modelo, estado, tipo, ram, procesador, tamDiscoDuroGB y tipoDisco y guarda el ordenador llamando al método save().
+    // Constructor que recibe marca, modelo, estado, tipo, ram, procesador,
+    // tamDiscoDuroGB y tipoDisco y guarda el ordenador llamando al método save().
     public Ordenador(String marca, String modelo, boolean estado, int ram, String procesador, int tamDiscoDuroGB,
             int tipoDisco) {
         super(marca, modelo, estado);
@@ -118,19 +119,19 @@ public class Ordenador extends Dispositivo {
         }
 
         String estadoString = super.estado ? "funciona" : "no funciona";
-        return  "ID: " + idOrdenador +
+        return "ID: " + idOrdenador +
                 ". Marca: " + super.marca +
                 ". Modelo: " + super.modelo +
                 ". Estado: " + estadoString +
                 ". Procesador: " + procesador +
                 ". Memoria RAM: " + ram + " GB" +
-                ". Almacenamiento: " + tipoDiscoString + " " + tamDiscoDuroGB + " GB." +
+                ". Almacenamiento: " + tipoDiscoString + " " + tamDiscoDuroGB + " GB" +
                 ". Id_ajeno = " + super.id_ajeno;
     }
 
     // Método para guardar el ordenador en el fichero ordenadores.dat
     public int save() { // Cada línea ocupa 116 bytes
-        
+
         try {
             super.save();
             RandomAccessFile raf = new RandomAccessFile("ordenadores.dat", "rw");
@@ -163,7 +164,6 @@ public class Ordenador extends Dispositivo {
             this.procesador = super.leerString(raf);
             this.tamDiscoDuroGB = raf.readInt();
             this.tipoDisco = raf.readInt();
-
             raf.close();
             return 0;
         } catch (Exception e) {

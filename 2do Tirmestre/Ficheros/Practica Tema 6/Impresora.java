@@ -7,7 +7,8 @@ public class Impresora extends Dispositivo {
     private boolean scanner;
     private final int tamLinea = 10;
 
-    // Constructor que recibe marca, modelo, estado, tipo, tip, color y scanner y guarda la impresora llamando al método save().
+    // Constructor que recibe marca, modelo, estado, tipo, tip, color y scanner y
+    // guarda la impresora llamando al método save().
     public Impresora(String marca, String modelo, boolean estado, int tipoImpr, boolean color, boolean scanner) {
         super(marca, modelo, estado);
         this.idImpresora = generarIdImpresora();
@@ -83,7 +84,7 @@ public class Impresora extends Dispositivo {
     @Override
     public String toString() {
         String tipoString;
-        switch (tipo) {
+        switch (tipoImpr) {
             case 0:
                 tipoString = "Láser";
                 break;
@@ -107,7 +108,7 @@ public class Impresora extends Dispositivo {
                 ". Estado: " + estadoString +
                 ". Tipo: " + tipoString +
                 ". Soporte de Color: " + colorString +
-                ". Escáner: " + scannerString + "." + 
+                ". Escáner: " + scannerString + "." +
                 ". Id Ajeno: " + super.id_ajeno;
     }
 
