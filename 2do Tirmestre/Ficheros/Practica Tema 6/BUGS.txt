@@ -1,4 +1,5 @@
 - AL REINICIAR EL PROGRAMA Y INICIARLO CON UN FRICHERO YA CREADO NO SE EJECUTA. (PROBLEMA EN CONSTRUCTOR DE MAIN, con método cargarARraylist().)
-- AL PONER EN ESTADO "NO FUNCIONA" PETA.
+- AL CREAR IMPRESORA, DA ERROR "NEGATIVE SEEK OFFSET"
 - AL BORRAR SE QUEDA CONGELADO.
-- 
+- Constructor Imrpesora y Ordenador (id) algo no esta bien (super(id))
+- Al crear varios dispositivos hay un momento donde se acumulan varios y se crea el anterior agregado...

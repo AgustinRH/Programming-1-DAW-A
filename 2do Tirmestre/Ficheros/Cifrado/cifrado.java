@@ -2,9 +2,17 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-
+/**
+ * Clase para cifrar archivos de texto.
+ */
 public class cifrado {
 
+    /**
+     * Cifra el contenido de un archivo de texto y guarda el resultado en otro archivo.
+     * 
+     * @param archivo Ruta del archivo de texto original.
+     * @param cifrado Ruta del archivo donde se guardará el texto cifrado.
+     */
     public void cifrar(String archivo, String cifrado) {
         try {
             FileInputStream fis = new FileInputStream(archivo);

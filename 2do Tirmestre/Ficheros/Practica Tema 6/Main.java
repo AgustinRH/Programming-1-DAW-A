@@ -1,56 +1,58 @@
-
-import java.io.RandomAccessFile;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-
-    // Varaibles de la clase
+    // Variables de la clase
     private ArrayList<Dispositivo> listaDispositivos;
     private Scanner sc;
 
-    public Main() { // Constructor de la clase Main
-        
+    // Constructor de la clase Main
+    public Main() {
         sc = new Scanner(System.in); // Inicializamos Scanner
-        listaDispositivos = new ArrayList<>(); // Inicializamos 
-        
-        cargarArraylist();
+        listaDispositivos = new ArrayList<>(); // Inicializamos el ArrayList
+        cargarArraylist(); // Cargamos los datos de los ficheros al ArrayList
     }
 
     public static void main(String[] args) {
         System.out.println("BIENVENIDO!");
-        Main m = new Main();
-        m.menuPrincipal();
+        Main m = new Main(); // Creamos el objeto de main
+        m.menuPrincipal(); // Llamamos al método menuPrincipal() de main
     }
 
+    // Método para cargar los ficheros al ArrayList
     public void cargarArraylist() {
-        RandomAccessFile raf = null;
-        try {
-            // Abrimos archivo dispositivos.dat
-            raf = new RandomAccessFile("dispositivos.dat", "r");
+        int id = 0;
 
-            while (raf.getFilePointer() < raf.length()) { 
-                Dispositivo dispositivo = new Dispositivo(0);
-                dispositivo.load(); // Cargamos los datos del dispositivo desde el archivo
-                listaDispositivos.add(dispositivo);
-            }
-
-            raf.close();
-        } catch (Exception e) {
-            e.getMessage();
-        } finally {
-            try {
-                if (raf != null) {
-                    raf.close();
+        boolean terminar = false;
+        while (!terminar) {
+            Dispositivo d = new Dispositivo(id);
+            if (d.load() == 0) {
+                System.out.println(d.toString());
+                switch (d.getTipo()) {
+                    case 2:
+                        Ordenador o = new Ordenador(id);
+                        o.load();
+                        listaDispositivos.add(o);
+                        break;
+                    case 3:
+                        Impresora i = new Impresora(id);
+                        i.load();
+                        listaDispositivos.add(i);
+                        break;
+                    default:
+                        listaDispositivos.add(d);
+                        break;
                 }
-            } catch (Exception e) {
-                e.getMessage();
+            } else {
+                terminar = true;
             }
+            id++;
         }
     }
 
+    // Método que muestra un menú de opciones
     private void menuPrincipal() {
-        int option;
+        int opc;
         do {
             System.out.println("MENÚ PRINCIPAL");
             System.out.println("--------------");
@@ -60,29 +62,34 @@ public class Main {
             System.out.println("4. Borrar dispositivo");
             System.out.println("5. Cambiar estado dispositivo");
             System.out.println("6. Modificar dispositivo");
+            System.out.println("7. Recuperar dispositivo");
             System.out.println("0. Salir");
             System.out.print("Seleccione una opción: ");
-            option = sc.nextInt();
+            opc = sc.nextInt();
             sc.nextLine();
+            System.out.println(); // ESPACIADO
 
-            switch (option) {
+            switch (opc) {
                 case 1:
-                    anadirDispositivo();
+                    anadirDispositivo(); // Llamamos al método anadirDispositivo()
                     break;
                 case 2:
-                    mostrarDispositivos();
+                    mostrarDispositivos(); // Llamamos al método mostrarDispositivos()
                     break;
                 case 3:
-                    buscarDispositivo();
+                    buscarDispositivo(); // Llamamos al método buscarDispositivos()
                     break;
                 case 4:
-                    borrarDispositivo();
+                    borrarDispositivo(); // Llamamos al método borrarDispositivos
                     break;
                 case 5:
-                    cambiarEstadoDispositivo();
+                    cambiarEstadoDispositivo(); // Llamamos al método cambiarEstadoDispositivo()
                     break;
                 case 6:
-                    modificarDispositivo();
+                    modificarDispositivo(); // Llamamos al método modificarDispositivo()
+                    break;
+                case 7:
+                    recuperarDispositivo(); // Llamamos al método recuperarDispositivo()
                     break;
                 case 0:
                     System.out.println("Saliendo...");
@@ -90,120 +97,116 @@ public class Main {
                 default:
                     System.out.println("Opción no válida. Intente de nuevo.");
             }
-        } while (option != 0);
+        } while (opc != 0);
     }
 
+    // Método para añadir un dispositivo nuevo
     public void anadirDispositivo() {
-        System.out.println("Ingresa los siguientes datos para añadir un dispositivo nuevo.");
-        System.out.println("Marca: ");
-        String marca = sc.next();
-        System.out.println("Modelo: ");
-        String modelo = sc.next();
-        boolean estado = true;
-
-        try {
-            System.out.println("Estado: \n1. Funciona.\n2. No funciona.");
-            int est = sc.nextInt();
-            if (est == 1) {
-                estado = true;
-            }
-            if (est == 2) {
-
-                estado = false;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        String marca = obtenerMarca();
+        String modelo = obtenerModelo();
+        boolean estado = obtenerEstado();
+        int tipo = obtenerTipoDispositivo();
 
         Dispositivo d = new Dispositivo(marca, modelo, estado);
 
-        System.out.println("¿Qué tipo de dispositivo es? \n1. Dispositivo. \n2. Ordenador. \n3. Impresora.");
-        d.setTipo(sc.nextInt());
-
-        switch (d.tipo) {
+        switch (tipo) {
             case 1:
                 System.out.println("Dispositivo creado correctamente.");
+                System.out.println(); // ESPACIADO
+
+                listaDispositivos.add(d);
+                d.save();
                 break;
             case 2:
-                System.out.println("Ingrese la RAM:");
-                int ram = sc.nextInt();
-                System.out.println("Procesador: ");
-                String procesador = sc.nextLine();
-                System.out.println("Ingrese el tamaño del Disco Duro: ");
-                int tamDisco = sc.nextInt();
-                System.out.println("Ingrese el tipo Disco Duro: ");
-                int tipoDisco = sc.nextInt();
-
-                Ordenador ord = new Ordenador(d.marca, d.modelo, d.estado, ram, procesador, tamDisco, tipoDisco);
-
-                d.setIdAjeno(ord.getId());
-                ord.save();
-                ord.load();
+                crearOrdenador(d);
                 break;
             case 3:
-                System.out.println("Ingresa el tipo de Impresora: \n 1. Láser.\n2. Inyección de tinta.\n3. Otros.");
-                int tipo = sc.nextInt();
-                
-                System.out.println("Ingrese si es de color o no:\n 1. SÍ. \n 2. NO.");
-                int colorInt = sc.nextInt();
-                boolean color;
-                switch (colorInt) {
-                    case 1:
-                        color = true;
-                        break;
-                    case 2:
-                        color = false;
-                        break;
-                    default:
-                        System.out.println("Error al responder...");
-                        color = false; 
-                        break;
-                }
-                
-                System.out.println("¿Tiene Scanner?\n1. SÍ.\n2. NO.");
-                int scannerInt = sc.nextInt();
-                boolean scanner = false;
-                switch (scannerInt) {
-                    case 1:
-                        scanner = true;
-                        break;
-                    case 2:
-                        scanner = false;
-                        break;
-                    default:
-                        System.out.println("Error al responder...");
-                        break;
-                }
-                
-                Impresora imp = new Impresora(d.marca,d.modelo,d.estado, tipo, color, scanner);
-                d.setIdAjeno(imp.getId()); 
-                imp.save();
-                imp.load();           
-            break;
+                crearImpresora(d);
+                break;
         }
-        d.load();
+
         System.out.println(d.toString());
-        listaDispositivos.add(d);
     }
 
-    /*public void mostrarDispositivos() {
-        if (listaDispositivos.isEmpty()) {
-            System.out.println("No hay dispositivos disponibles.");
-        } else {
-            for (Dispositivo d : listaDispositivos) {
-                if (!d.borrado()) { // Verificamos si el dispositivo no está borrado
-                    System.out.println(d.toString());
-                }
-            }
-        }
-    }*/
+    // Método para obtener la marca de un dispositivo
+    private String obtenerMarca() {
+        System.out.print("Marca: ");
+        return sc.next();
+    }
+
+    // Método para obtener el modelo de un dispositivo
+    private String obtenerModelo() {
+        sc.nextLine();
+        System.out.print("Modelo: ");
+        return sc.next();
+    }
+
+    // Método para obtener el estado de un dispositivo
+    private boolean obtenerEstado() {
+        System.out.println("Estado: \n1. Funciona.\n2. No funciona.");
+        int est = sc.nextInt();
+        return est == 1;
+    }
+
+    // Método para obtener el tipo de dispositivo
+    private int obtenerTipoDispositivo() {
+        System.out.println("¿Qué tipo de dispositivo es? \n1. Dispositivo. \n2. Ordenador. \n3. Impresora.");
+        return sc.nextInt();
+    }
+
+    // Método para crear un ordenador
+    private void crearOrdenador(Dispositivo d) {
+        System.out.print("Ingrese la RAM: ");
+        int ram = sc.nextInt();
+        sc.nextLine(); // Consumir salto de línea
+        System.out.print("Procesador: ");
+        String procesador = sc.nextLine();
+        System.out.print("Ingrese el tamaño del Disco Duro: ");
+        int tamDisco = sc.nextInt();
+        System.out.print("Ingrese el tipo Disco Duro: \n1. HDD.\n2. SSD.\n3. nvMe.\n4. Otro.");
+        int tipoDisco = sc.nextInt();
+
+        Ordenador ord = new Ordenador(d.marca, d.modelo, d.estado, ram, procesador, tamDisco, tipoDisco);
+        System.out.println(ord.toString());
+        d.setIdAjeno(ord.getId());
+        ord.save();
+        listaDispositivos.add(ord);
+    }
+
+    // Método para crear una impresora
+    private void crearImpresora(Dispositivo d) {
+        System.out.println("Ingresa el tipo de Impresora: \n1. Láser.\n2. Inyección de tinta. \n3. Otros.");
+        int tipoImpr = sc.nextInt();
+
+        boolean color = obtenerColor();
+        boolean scanner = obtenerScanner();
+
+        Impresora imp = new Impresora(d.marca, d.modelo, d.estado, tipoImpr, color, scanner);
+        imp.save();
+        listaDispositivos.add(imp);
+    }
+
+    // Método para obtener si una impresora es de color o no
+    private boolean obtenerColor() {
+        System.out.println("Ingrese si es de color o no:\n1. SÍ. \n2. NO.");
+        int colorInt = sc.nextInt();
+        return colorInt == 1;
+    }
+
+    // Método para obtener si una impresora tiene scanner o no
+    private boolean obtenerScanner() {
+        System.out.println("¿Tiene Scanner?\n1. SÍ.\n2. NO.");
+        int scannerInt = sc.nextInt();
+        return scannerInt == 1;
+    }
+
+    // Método para mostrar dispositivos con opción de filtro
     public void mostrarDispositivos() {
         if (listaDispositivos.isEmpty()) {
             System.out.println("No hay dispositivos disponibles.");
             return;
         }
-    
-        Scanner sc = new Scanner(System.in);
+
         System.out.println("Elige qué tipo de dispositivos quieres mostrar:");
         System.out.println("1. Todos los dispositivos");
         System.out.println("2. Ordenadores");
@@ -211,25 +214,26 @@ public class Main {
         System.out.println("4. Otros dispositivos");
         System.out.print("Opción: ");
         int opcion = sc.nextInt();
-    
+
         for (Dispositivo d : listaDispositivos) {
             if (!d.borrado()) { // Solo dispositivos no borrados
                 switch (opcion) {
                     case 1: // Mostrar todos
                         System.out.println(d.toString());
+                        
                         break;
                     case 2: // Mostrar solo Ordenadores
-                        if (d.getTipo() == 1) {
-                            System.out.println(d.toString());
-                        }
-                        break;
-                    case 3: // Mostrar solo Impresoras
                         if (d.getTipo() == 2) {
                             System.out.println(d.toString());
                         }
                         break;
+                    case 3: // Mostrar solo Impresoras
+                        if (d.getTipo() == 3) {
+                            System.out.println(d.toString());
+                        }
+                        break;
                     case 4: // Mostrar otros dispositivos
-                        if (d.getTipo() == 0) {
+                        if (d.getTipo() == 4) {
                             System.out.println(d.toString());
                         }
                         break;
@@ -241,6 +245,7 @@ public class Main {
         }
     }
 
+    // Método para buscar un dispositivo por su ID
     public void buscarDispositivo() {
         System.out.print("Ingrese el ID del dispositivo a buscar: ");
         int id = sc.nextInt();
@@ -260,6 +265,7 @@ public class Main {
         }
     }
 
+    // Método para borrar un dispositivo marcándolo como borrado
     public void borrarDispositivo() {
         System.out.print("Ingrese el ID del dispositivo a borrar: ");
         int id = sc.nextInt();
@@ -273,18 +279,18 @@ public class Main {
         }
 
         if (dispositivo != null) {
-            dispositivo.setBorrado(true);
+            dispositivo.setBorrado(true); //
             dispositivo.save(); // Guardamos los cambios
             System.out.println("Dispositivo con ID " + id + " marcado como borrado.");
 
-            listaDispositivos.clear(); // Limpiamos la lista actual
-            cargarArraylist(); // Recargamos la lista DESPUÉS de guardar
-            System.out.println("PATATA");
+            // listaDispositivos.clear(); // Limpiamos la lista actual
+            // cargarArraylist(); // Recargamos la lista DESPUÉS de guardar
         } else {
             System.out.println("Dispositivo con ID " + id + " no encontrado.");
         }
     }
 
+    // Método para cambiar el estado de un dispositivo
     public void cambiarEstadoDispositivo() {
         System.out.print("Ingrese el ID del dispositivo para cambiar su estado: ");
         int id = sc.nextInt();
@@ -304,9 +310,7 @@ public class Main {
                 int est = sc.nextInt();
                 if (est == 1) {
                     nuevoEstado = true;
-                }
-                if (est == 2) {
-
+                } else if (est == 2) {
                     nuevoEstado = false;
                 }
             } catch (Exception e) {
@@ -315,12 +319,15 @@ public class Main {
             }
             dispositivo.setEstado(nuevoEstado);
             dispositivo.save(); // Guardamos cambios en el archivo
+            // listaDispositivos.clear();
+            // listaDispositivos.add(dispositivo);
             System.out.println("Estado del dispositivo con ID " + id + " cambiado.");
         } else {
             System.out.println("Dispositivo con ID " + id + " no encontrado.");
         }
     }
 
+    // Método para modificar la información de un dispositivo
     public void modificarDispositivo() {
         System.out.print("Ingrese el ID del dispositivo a modificar: ");
         int id = sc.nextInt();
@@ -334,11 +341,11 @@ public class Main {
         }
 
         if (dispositivo != null) {
-            System.out.println("Modificar marca (actual: " + dispositivo.getMarca() + "): ");
+            System.out.print("Modificar marca (actual: " + dispositivo.getMarca() + "): ");
             String nuevaMarca = sc.next();
             dispositivo.setMarca(nuevaMarca);
 
-            System.out.println("Modificar modelo (actual: " + dispositivo.getModelo() + "): ");
+            System.out.print("Modificar modelo (actual: " + dispositivo.getModelo() + "): ");
             String nuevoModelo = sc.next();
             dispositivo.setModelo(nuevoModelo);
 
@@ -349,12 +356,30 @@ public class Main {
         }
     }
 
-    public boolean comprobarBorrado(int id) {
-        for (Dispositivo d : listaDispositivos) {
-            if (d.getId() == id) {
-                return d.borrado(); // Devolvemos el valor de "borrado" del dispositivo
+    // Método para comprobar si un dispositivo está marcado como borrado
+    public void recuperarDispositivo() {
+        try {
+            System.out.println(); // ESPACIADO
+            System.out.println("LISTA DE DISPOSITIVOS BORRADOS:");
+            for (Dispositivo d : listaDispositivos) {
+                if (d.borrado()) {
+                    System.out.println(d.toString());
+                }
             }
+            System.out.println(); // ESPACIADO
+
+            System.out.println("¿Qué dispositivo deseas recuperar?");
+            int idRecuperado = sc.nextInt();
+
+            for (Dispositivo d : listaDispositivos) {
+                if (d.getId() == idRecuperado) {
+                    d.setBorrado(false);
+                }
+            }
+            System.out.println(); // ESPACIADO
+            System.out.println("Dispositivo recuperado con éxito");
+        } catch (Exception e) {
+            e.getMessage();
         }
-        return false; // El dispositivo no se encontró
     }
 }

@@ -4,8 +4,8 @@ import java.io.RandomAccessFile;
 public class Dispositivo {
 
     // Variables de la clase
-    protected int id, tipo;
-    protected int id_ajeno;
+    protected int id, tipo = 1;
+    protected int id_ajeno = -1;
     protected String marca, modelo;
     protected boolean estado, borrado;
     private final int TAM_REG = 214;
@@ -18,8 +18,7 @@ public class Dispositivo {
         this.modelo = modelo;
         this.estado = estado;
         this.borrado = false;
-         
-        save();
+        this.tipo = 1;
     }
 
     // Constructor que recibe un id e inicializa todo vacío.
@@ -30,7 +29,6 @@ public class Dispositivo {
         this.estado = true;
     }
 
-
     // Método para generar el ID
     public int generarId() {
         try {
@@ -38,10 +36,8 @@ public class Dispositivo {
             int id = 0;
             if (f.exists()) {
                 RandomAccessFile raf = new RandomAccessFile("dispositivos.dat", "r");
-
                 raf.seek(raf.length() - TAM_REG);
                 id = raf.readInt() + 1;
-
                 raf.close();
             }
             return id;
@@ -57,60 +53,73 @@ public class Dispositivo {
         return this.id;
     }
 
-
     // Setter de Marca
     public void setMarca(String m) {
         this.marca = m;
     }
 
+    // Getter de Marca
     public String getMarca() {
         return this.marca;
     }
 
+    // Setter de Modelo
     public void setModelo(String m) {
         this.modelo = m;
     }
 
+    // Getter de Modelo
     public String getModelo() {
         return this.modelo;
     }
 
+    // Getter de Estado
     public boolean estado() {
         return this.estado;
     }
 
+    // Setter de Estado
     public void setEstado(boolean est) {
         this.estado = est;
     }
 
+    // Método para cambiar el estado del dispositivo
     public void cambiarEstado(boolean e) {
         this.estado = e;
     }
 
+    // Getter de Borrado
     public boolean borrado() {
         return this.borrado;
     }
 
+    // Setter de Borrado
     public void setBorrado(boolean b) {
         this.borrado = b;
     }
 
+    // Getter de Tipo
     public int getTipo() {
         return this.tipo;
     }
 
+    // Setter de Tipo
     public void setTipo(int t) {
         this.tipo = t;
     }
 
+    // Getter de Id Ajeno
     public int getIdAjeno() {
         return id_ajeno;
     }
 
+    // Setter de Id Ajeno
     public void setIdAjeno(int id) {
         this.id_ajeno = id;
     }
 
+    // Método toString para mostrar los datos del dispositivo
+    @Override
     public String toString() {
         String est;
         if (estado) {
@@ -118,9 +127,22 @@ public class Dispositivo {
         } else {
             est = "no funciona";
         }
-        return "ID: " + this.id + ". Marca: " + this.marca + ". Modelo: " + this.modelo + ". Estado: " + est + ".";
+        String tipoString = "Dispositivo";
+        switch (tipo) {
+            case 1:
+                tipoString = "Dispositivo";
+                break;
+            case 2:
+                tipoString = "Ordenador";
+                break;
+            case 3:
+                tipoString = "Impresora";
+                break;
+            default:
+                break;
+        }
+        return "ID: " + this.id + ". Marca: " + this.marca + ". Modelo: " + this.modelo + ". Estado: " + est + ". Tipo: " + tipoString;
     }
-
 
     // Método para escribir un String dentro del registro
     protected void escribirString(RandomAccessFile raf, String str) throws Exception {
@@ -134,12 +156,12 @@ public class Dispositivo {
         }
     }
 
+    // Método para guardar el dispositivo en el fichero
     public int save() {
         try {
             RandomAccessFile raf = new RandomAccessFile("dispositivos.dat", "rw");
-            long tamanioFichero = raf.length(); //
+            long tamanioFichero = raf.length(); 
             raf.seek(tamanioFichero);
-
             raf.writeInt(this.id);  // ID 4
             escribirString(raf, marca);  // MARCA 100
             escribirString(raf, modelo); // MODELO 100
@@ -155,6 +177,7 @@ public class Dispositivo {
         }
     }
 
+    // Método para leer un String del registro
     protected String leerString(RandomAccessFile raf) throws Exception {
         long pos = raf.getFilePointer();
         String str = raf.readUTF();
@@ -162,10 +185,12 @@ public class Dispositivo {
         return str;
     }
 
+    // Método para cargar los datos del dispositivo
     public int load() {
         try {
             RandomAccessFile raf = new RandomAccessFile("dispositivos.dat", "r");
             raf.seek(this.id * TAM_REG);
+            System.out.println(raf.getFilePointer());
             this.id = raf.readInt();
             this.marca = leerString(raf);
             this.modelo = leerString(raf);
@@ -180,14 +205,13 @@ public class Dispositivo {
         }
     }
 
+    // Método para borrar un dispositivo
     public void delete() {
         try {
             // Abrir el archivo en modo lectura y escritura
             RandomAccessFile raf = new RandomAccessFile("dispositivos.dat", "rw");
-    
             // Buscar la posición del registro
             raf.seek(this.id * TAM_REG);
-    
             raf.readInt();  // Salta el ID
             leerString(raf);  // Salta la marca
             leerString(raf);  // Salta el modelo
@@ -195,10 +219,8 @@ public class Dispositivo {
             raf.readInt();  // Salta el tipo
             raf.readBoolean();  // Salta el valor borrado actual
             raf.readInt();  // Salta el id ajeno
-    
             // Ahora sobreescribimos el valor borrado en la posición correspondiente
             raf.writeBoolean(true);  // Marcamos el dispositivo como borrado
-    
             // Cerrar el archivo
             raf.close();
         } catch (Exception e) {
