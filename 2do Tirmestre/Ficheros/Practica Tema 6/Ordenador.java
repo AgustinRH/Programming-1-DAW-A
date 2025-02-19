@@ -8,8 +8,17 @@ public class Ordenador extends Dispositivo {
     private int tipoDisco;
     private final int tamLinea = 116;
 
-    // Constructor que recibe marca, modelo, estado, tipo, ram, procesador,
-    // tamDiscoDuroGB y tipoDisco y guarda el ordenador llamando al método save().
+    /**
+     * Constructor que recibe marca, modelo, estado, tipo, ram, procesador, tamDiscoDuroGB y tipoDisco y guarda el ordenador llamando al método save().
+     * 
+     * @param marca La marca del ordenador
+     * @param modelo El modelo del ordenador
+     * @param estado El estado del ordenador (true si funciona, false si no funciona)
+     * @param ram La cantidad de RAM del ordenador
+     * @param procesador El procesador del ordenador
+     * @param tamDiscoDuroGB El tamaño del disco duro en GB
+     * @param tipoDisco El tipo de disco duro (1: HDD, 2: SSD, 3: NVMe, 4: Otro)
+     */
     public Ordenador(String marca, String modelo, boolean estado, int ram, String procesador, int tamDiscoDuroGB,
             int tipoDisco) {
         super(marca, modelo, estado);
@@ -22,7 +31,11 @@ public class Ordenador extends Dispositivo {
         super.setIdAjeno(idOrdenador);
     }
 
-    // Constructor que recibe un id e inicializa todo vacío.
+    /**
+     * Constructor que recibe un id e inicializa todo vacío.
+     * 
+     * @param id El ID del ordenador
+     */
     public Ordenador(int id) {
         super(id);
         this.ram = 0;
@@ -31,7 +44,11 @@ public class Ordenador extends Dispositivo {
         this.tipoDisco = 0;
     }
 
-    // Método para generar el ID
+    /**
+     * Método para generar el ID del ordenador.
+     * 
+     * @return El ID generado
+     */
     public int generarIdOrdenador() {
         try {
             File f = new File("ordenadores.dat");
@@ -52,42 +69,74 @@ public class Ordenador extends Dispositivo {
         }
     }
 
-    // Getter de Ram
+    /**
+     * Getter de Ram.
+     * 
+     * @return La cantidad de RAM del ordenador
+     */
     public int getRam() {
         return this.ram;
     }
 
-    // Setter de Ram
+    /**
+     * Setter de Ram.
+     * 
+     * @param r La cantidad de RAM del ordenador
+     */
     public void setRam(int r) {
         this.ram = r;
     }
 
-    // Getter de Procesador
+    /**
+     * Getter de Procesador.
+     * 
+     * @return El procesador del ordenador
+     */
     public String getProcesador() {
         return this.procesador;
     }
 
-    // Setter de Procesador
+    /**
+     * Setter de Procesador.
+     * 
+     * @param p El procesador del ordenador
+     */
     public void setProcesador(String p) {
         this.procesador = p;
     }
 
-    // Getter de TamDiscoDuro
+    /**
+     * Getter de TamDiscoDuro.
+     * 
+     * @return El tamaño del disco duro en GB
+     */
     public int getTamDiscoDuro() {
         return this.tamDiscoDuroGB;
     }
 
-    // Setter de TamDiscoDuro
+    /**
+     * Setter de TamDiscoDuro.
+     * 
+     * @param tamDisco El tamaño del disco duro en GB
+     */
     public void setTamDiscoDuro(int tamDisco) {
         this.tamDiscoDuroGB = tamDisco;
     }
 
-    // Getter de TipoDisco
+    /**
+     * Getter de TipoDisco.
+     * 
+     * @return El tipo de disco duro (1: HDD, 2: SSD, 3: NVMe, 4: Otro)
+     */
     public int getTipoDisco() {
         return this.tipoDisco;
     }
 
-    // Setter de TipoDisco
+    /**
+     * Setter de TipoDisco.
+     * 
+     * @param tipoDisco El tipo de disco duro (1: HDD, 2: SSD, 3: NVMe, 4: Otro)
+     */
     public void setTipoDisco(int tipoDisco) {
         if (tipoDisco >= 1 && tipoDisco <= 4) {
             this.tipoDisco = tipoDisco;
@@ -96,7 +145,11 @@ public class Ordenador extends Dispositivo {
         }
     }
 
-    // Método toString que devuelve un String con la información del ordenador.
+    /**
+     * Método toString que devuelve un String con la información del ordenador.
+     * 
+     * @return Una cadena con los datos del ordenador
+     */
     @Override
     public String toString() {
         String tipoDiscoString;
@@ -129,7 +182,11 @@ public class Ordenador extends Dispositivo {
                 ". Id_ajeno = " + super.id_ajeno;
     }
 
-    // Método para guardar el ordenador en el fichero ordenadores.dat
+    /**
+     * Método para guardar el ordenador en el fichero ordenadores.dat.
+     * 
+     * @return 0 si se guarda correctamente, 1 si ocurre un error
+     */
     public int save() { // Cada línea ocupa 116 bytes
 
         try {
@@ -151,7 +208,11 @@ public class Ordenador extends Dispositivo {
         }
     }
 
-    // Método para cargar el ordenador desde el fichero ordenadores.dat
+    /**
+     * Método para cargar el ordenador desde el fichero ordenadores.dat.
+     * 
+     * @return 0 si se carga correctamente, 1 si ocurre un error
+     */
     public int load() {
         try {
             super.load();

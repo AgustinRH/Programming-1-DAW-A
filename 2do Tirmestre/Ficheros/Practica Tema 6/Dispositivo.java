@@ -11,8 +11,13 @@ public class Dispositivo {
     private final int TAM_REG = 214;
     private final int MAX_STRING_LENGTH = 100;
 
-    // Contructor que recibe marca, modelo y estado y guarda el dispositivo llamando
-    // al método save().
+    /**
+     * Constructor que recibe marca, modelo y estado y guarda el dispositivo llamando al método save().
+     * 
+     * @param marca La marca del dispositivo
+     * @param modelo El modelo del dispositivo
+     * @param estado El estado del dispositivo (true si funciona, false si no funciona)
+     */
     public Dispositivo(String marca, String modelo, boolean estado) {
         this.id = generarId();
         this.marca = marca;
@@ -22,7 +27,11 @@ public class Dispositivo {
         this.tipo = 1;
     }
 
-    // Constructor que recibe un id e inicializa todo vacío.
+    /**
+     * Constructor que recibe un id e inicializa todo vacío.
+     * 
+     * @param id El ID del dispositivo
+     */
     public Dispositivo(int id) {
         this.id = id;
         this.marca = "";
@@ -30,7 +39,11 @@ public class Dispositivo {
         this.estado = true;
     }
 
-    // Método para generar el ID
+    /**
+     * Método para generar el ID del dispositivo.
+     * 
+     * @return El ID generado
+     */
     public int generarId() {
         try {
             File f = new File("dispositivos.dat");
@@ -49,77 +62,137 @@ public class Dispositivo {
         }
     }
 
-    // Getter de Id
+    /**
+     * Getter de Id.
+     * 
+     * @return El ID del dispositivo
+     */
     public int getId() {
         return this.id;
     }
 
-    // Setter de Marca
+    /**
+     * Setter de Marca.
+     * 
+     * @param m La marca del dispositivo
+     */
     public void setMarca(String m) {
         this.marca = m;
     }
 
-    // Getter de Marca
+    /**
+     * Getter de Marca.
+     * 
+     * @return La marca del dispositivo
+     */
     public String getMarca() {
         return this.marca;
     }
 
-    // Setter de Modelo
+    /**
+     * Setter de Modelo.
+     * 
+     * @param m El modelo del dispositivo
+     */
     public void setModelo(String m) {
         this.modelo = m;
     }
 
-    // Getter de Modelo
+    /**
+     * Getter de Modelo.
+     * 
+     * @return El modelo del dispositivo
+     */
     public String getModelo() {
         return this.modelo;
     }
 
-    // Getter de Estado
+    /**
+     * Getter de Estado.
+     * 
+     * @return El estado del dispositivo (true si funciona, false si no funciona)
+     */
     public boolean estado() {
         return this.estado;
     }
 
-    // Setter de Estado
+    /**
+     * Setter de Estado.
+     * 
+     * @param est El estado del dispositivo (true si funciona, false si no funciona)
+     */
     public void setEstado(boolean est) {
         this.estado = est;
     }
 
-    // Método para cambiar el estado del dispositivo
+    /**
+     * Método para cambiar el estado del dispositivo.
+     * 
+     * @param e El nuevo estado del dispositivo (true si funciona, false si no funciona)
+     */
     public void cambiarEstado(boolean e) {
         this.estado = e;
     }
 
-    // Getter de Borrado
+    /**
+     * Getter de Borrado.
+     * 
+     * @return true si el dispositivo está borrado, false si no lo está
+     */
     public boolean borrado() {
         return this.borrado;
     }
 
-    // Setter de Borrado
+    /**
+     * Setter de Borrado.
+     * 
+     * @param b true si el dispositivo está borrado, false si no lo está
+     */
     public void setBorrado(boolean b) {
         this.borrado = b;
     }
 
-    // Getter de Tipo
+    /**
+     * Getter de Tipo.
+     * 
+     * @return El tipo del dispositivo
+     */
     public int getTipo() {
         return this.tipo;
     }
 
-    // Setter de Tipo
+    /**
+     * Setter de Tipo.
+     * 
+     * @param t El tipo del dispositivo
+     */
     public void setTipo(int t) {
         this.tipo = t;
     }
 
-    // Getter de Id Ajeno
+    /**
+     * Getter de Id Ajeno.
+     * 
+     * @return El ID ajeno del dispositivo
+     */
     public int getIdAjeno() {
         return id_ajeno;
     }
 
-    // Setter de Id Ajeno
+    /**
+     * Setter de Id Ajeno.
+     * 
+     * @param id El ID ajeno del dispositivo
+     */
     public void setIdAjeno(int id) {
         this.id_ajeno = id;
     }
 
-    // Método toString para mostrar los datos del dispositivo
+    /**
+     * Método toString para mostrar los datos del dispositivo.
+     * 
+     * @return Una cadena con los datos del dispositivo
+     */
     @Override
     public String toString() {
         String est;
@@ -146,7 +219,13 @@ public class Dispositivo {
                 + ". Tipo: " + tipoString + ". Id_ajeno: " + this.id_ajeno;
     }
 
-    // Método para escribir un String dentro del registro
+    /**
+     * Método para escribir un String dentro del registro.
+     * 
+     * @param raf El archivo de acceso aleatorio
+     * @param str El String a escribir
+     * @throws Exception Si ocurre un error durante la escritura
+     */
     protected void escribirString(RandomAccessFile raf, String str) throws Exception {
         long posIni = raf.getFilePointer(); // Guardamos la posición antes de escribir el String
         raf.writeUTF(str); // Escribimos el String
@@ -160,7 +239,11 @@ public class Dispositivo {
         }
     }
 
-    // Método para guardar el dispositivo en el fichero
+    /**
+     * Método para guardar el dispositivo en el fichero.
+     * 
+     * @return 0 si se guarda correctamente, 1 si ocurre un error
+     */
     public int save() {
         try {
             RandomAccessFile raf = new RandomAccessFile("dispositivos.dat", "rw");
@@ -181,7 +264,13 @@ public class Dispositivo {
         }
     }
 
-    // Método para leer un String del registro
+    /**
+     * Método para leer un String del registro.
+     * 
+     * @param raf El archivo de acceso aleatorio
+     * @return El String leído
+     * @throws Exception Si ocurre un error durante la lectura
+     */
     protected String leerString(RandomAccessFile raf) throws Exception {
         long pos = raf.getFilePointer();
         String str = raf.readUTF();
@@ -189,7 +278,11 @@ public class Dispositivo {
         return str;
     }
 
-    // Método para cargar los datos del dispositivo
+    /**
+     * Método para cargar los datos del dispositivo.
+     * 
+     * @return 0 si se carga correctamente, 1 si ocurre un error
+     */
     public int load() {
         try {
             RandomAccessFile raf = new RandomAccessFile("dispositivos.dat", "r");
@@ -209,7 +302,9 @@ public class Dispositivo {
         }
     }
 
-    // Método para borrar un dispositivo
+    /**
+     * Método para borrar un dispositivo.
+     */
     public void delete() {
         try {
             // Abrir el archivo en modo lectura y escritura

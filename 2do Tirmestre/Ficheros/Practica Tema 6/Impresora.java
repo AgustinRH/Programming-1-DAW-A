@@ -7,8 +7,16 @@ public class Impresora extends Dispositivo {
     private boolean scanner;
     private final int tamLinea = 10;
 
-    // Constructor que recibe marca, modelo, estado, tipo, tip, color y scanner y
-    // guarda la impresora llamando al método save().
+    /**
+     * Constructor que recibe marca, modelo, estado, tipo, tipoImpr, color y scanner y guarda la impresora llamando al método save().
+     * 
+     * @param marca La marca de la impresora
+     * @param modelo El modelo de la impresora
+     * @param estado El estado de la impresora (true si funciona, false si no funciona)
+     * @param tipoImpr El tipo de impresora (0: Láser, 1: Inyección de tinta, 2: Otro)
+     * @param color true si la impresora es de color, false si no lo es
+     * @param scanner true si la impresora tiene scanner, false si no lo tiene
+     */
     public Impresora(String marca, String modelo, boolean estado, int tipoImpr, boolean color, boolean scanner) {
         super(marca, modelo, estado);
         this.idImpresora = generarIdImpresora();
@@ -19,7 +27,11 @@ public class Impresora extends Dispositivo {
         super.setIdAjeno(idImpresora);
     }
 
-    // Constructor que recibe un id e inicializa todo vacío.
+    /**
+     * Constructor que recibe un id e inicializa todo vacío.
+     * 
+     * @param id El ID de la impresora
+     */
     public Impresora(int id) {
         super(id);
         this.tipo = -1;
@@ -27,7 +39,11 @@ public class Impresora extends Dispositivo {
         this.scanner = false;
     }
 
-    // Método para generar el ID
+    /**
+     * Método para generar el ID de la impresora.
+     * 
+     * @return El ID generado
+     */
     public int generarIdImpresora() {
         try {
             File f = new File("impresoras.dat");
@@ -46,12 +62,20 @@ public class Impresora extends Dispositivo {
         }
     }
 
-    // Getter de Tipo
+    /**
+     * Getter de Tipo.
+     * 
+     * @return El tipo de impresora (0: Láser, 1: Inyección de tinta, 2: Otro)
+     */
     public int getTipo() {
         return tipo;
     }
 
-    // Setter de Tipo
+    /**
+     * Setter de Tipo.
+     * 
+     * @param tipo El tipo de impresora (0: Láser, 1: Inyección de tinta, 2: Otro)
+     */
     public void setTipo(int tipo) {
         if (tipo >= 0 && tipo <= 2) {
             this.tipo = tipo;
@@ -60,27 +84,47 @@ public class Impresora extends Dispositivo {
         }
     }
 
-    // Getter de Color
+    /**
+     * Getter de Color.
+     * 
+     * @return true si la impresora es de color, false si no lo es
+     */
     public boolean color() {
         return color;
     }
 
-    // Setter de Color
+    /**
+     * Setter de Color.
+     * 
+     * @param color true si la impresora es de color, false si no lo es
+     */
     public void setColor(boolean color) {
         this.color = color;
     }
 
-    // Getter de Scanner
+    /**
+     * Getter de Scanner.
+     * 
+     * @return true si la impresora tiene scanner, false si no lo tiene
+     */
     public boolean scanner() {
         return scanner;
     }
 
-    // Setter de Scanner
+    /**
+     * Setter de Scanner.
+     * 
+     * @param scanner true si la impresora tiene scanner, false si no lo tiene
+     */
     public void setScanner(boolean scanner) {
         this.scanner = scanner;
     }
 
-    // Método toString que devuelve un String con la información de la impresora.
+    /**
+     * Método toString que devuelve un String con la información de la impresora.
+     * 
+     * @return Una cadena con los datos de la impresora
+     */
     @Override
     public String toString() {
         String tipoString;
@@ -112,7 +156,11 @@ public class Impresora extends Dispositivo {
                 ". Id Ajeno: " + super.id_ajeno;
     }
 
-    // Método para guardar la impresora en el fichero impresoras.dat
+    /**
+     * Método para guardar la impresora en el fichero impresoras.dat.
+     * 
+     * @return 0 si se guarda correctamente, 1 si ocurre un error
+     */
     public int save() {
         try {
             super.save();
@@ -130,7 +178,11 @@ public class Impresora extends Dispositivo {
         }
     }
 
-    // Método para cargar la impresora desde el fichero impresoras.dat
+    /**
+     * Método para cargar la impresora desde el fichero impresoras.dat.
+     * 
+     * @return 0 si se carga correctamente, 1 si ocurre un error
+     */
     public int load() {
         try {
             super.load();
