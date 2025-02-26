@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="683.0" prefWidth="1024.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ruleta.PrimaryController">
+   <children>
+      <ImageView fitHeight="683.0" fitWidth="1024.0" opacity="0.71" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/rule.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="269.0" fitWidth="930.0" layoutX="47.0" layoutY="70.0" opacity="0.9" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/cooltext476373993436514.gif" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="317.0" fitWidth="903.0" layoutX="75.0" layoutY="418.0" opacity="0.9" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/cooltext476373714484259.gif" />
+         </image>
+      </ImageView>
+      <Pane layoutX="324.0" layoutY="278.0" opacity="0.55" prefHeight="137.0" prefWidth="376.0" style="-fx-background-color: black; -fx-background-radius: 25;">
+         <children>
+            <Button fx:id="portada" layoutX="12.0" layoutY="12.0" mnemonicParsing="false" onAction="#switchToSecondary" style="-fx-background-color: 0; -fx-border-color: red; -fx-border-radius: 20; -fx-background-radius: 25; -fx-border-width: 5;" text="COMENZAR" textFill="RED">
+               <font>
+                  <Font name="System Bold" size="49.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+      <FlowPane layoutX="-3.0" prefHeight="203.0" prefWidth="1033.0" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+
+<AnchorPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="384.0" fitWidth="744.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/Tablero%20ruleta%2002_1.jpg" />
+         </image>
+      </ImageView>
+      <GridPane layoutX="125.0" layoutY="56.0" prefHeight="175.0" prefWidth="493.0">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="84.0" minHeight="10.0" prefHeight="54.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="88.0" minHeight="0.0" prefHeight="56.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="59.0" minHeight="10.0" prefHeight="59.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Button fx:id="tres" mnemonicParsing="false" onAction="#apostar3" opacity="0.0" prefHeight="73.0" prefWidth="41.0" />
+            <Button fx:id="dos" mnemonicParsing="false" onAction="#apostar2" opacity="0.0" prefHeight="73.0" prefWidth="41.0" GridPane.rowIndex="1" />
+            <Button fx:id="uno" mnemonicParsing="false" onAction="#apostar1" opacity="0.0" prefHeight="73.0" prefWidth="41.0" GridPane.rowIndex="2" />
+            <Button fx:id="seis" mnemonicParsing="false" onAction="#apostar6" opacity="0.0" prefHeight="73.0" prefWidth="41.0" GridPane.columnIndex="1" />
+            <Button fx:id="nueve" mnemonicParsing="false" onAction="#apostar9" opacity="0.0" prefHeight="73.0" prefWidth="41.0" GridPane.columnIndex="2" />
+            <Button fx:id="doce" mnemonicParsing="false" onAction="#apostar12" opacity="0.0" prefHeight="73.0" prefWidth="41.0" GridPane.columnIndex="3" />
+            <Button fx:id="quince" mnemonicParsing="false" onAction="#apostar15" opacity="0.0" prefHeight="73.0" prefWidth="41.0" GridPane.columnIndex="4" />
+            <Button fx:id="dieciocho" mnemonicParsing="false" onAction="#apostar18" opacity="0.0" prefHeight="73.0" prefWidth="41.0" GridPane.columnIndex="5" />
+            <Button fx:id="veintiuno" mnemonicParsing="false" onAction="#apostar21" opacity="0.0" prefHeight="73.0" prefWidth="41.0" GridPane.columnIndex="6" />
+            <Button fx:id="veinticuatro" mnemonicParsing="false" onAction="#apostar24" opacity="0.0" prefHeight="73.0" prefWidth="41.0" GridPane.columnIndex="7" />
+            <Button fx:id="veintisiete" mnemonicParsing="false" onAction="#apostar27" opacity="0.0" prefHeight="73.0" prefWidth="41.0" GridPane.columnIndex="8" />
+            <Button fx:id="treinta" mnemonicParsing="false" onAction="#apostar30" opacity="0.0" prefHeight="73.0" prefWidth="41.0" GridPane.columnIndex="9" />
+            <Button fx:id="treintaytres" mnemonicParsing="false" onAction="#apostar33" opacity="0.0" prefHeight="73.0" prefWidth="41.0" GridPane.columnIndex="10" />
+            <Button fx:id="treintayseis" mnemonicParsing="false" onAction="#apostar36" opacity="0.0" prefHeight="73.0" prefWidth="41.0" GridPane.columnIndex="11" />
+            <Button fx:id="cinco" mnemonicParsing="false" onAction="#apostar5" opacity="0.0" prefHeight="73.0" prefWidth="41.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Button fx:id="cuatro" mnemonicParsing="false" onAction="#apostar4" opacity="0.0" prefHeight="73.0" prefWidth="41.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Button fx:id="ocho" mnemonicParsing="false" onAction="#apostar8" opacity="0.0" prefHeight="73.0" prefWidth="41.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Button fx:id="once" mnemonicParsing="false" onAction="#apostar11" opacity="0.0" prefHeight="73.0" prefWidth="41.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <Button fx:id="catorce" mnemonicParsing="false" onAction="#apostar14" opacity="0.0" prefHeight="73.0" prefWidth="41.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+            <Button fx:id="diecisiete" mnemonicParsing="false" onAction="#apostar17" opacity="0.0" prefHeight="73.0" prefWidth="41.0" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+            <Button fx:id="veinte" mnemonicParsing="false" onAction="#apostar20" opacity="0.0" prefHeight="73.0" prefWidth="41.0" GridPane.columnIndex="6" GridPane.rowIndex="1" />
+            <Button fx:id="veintitres" mnemonicParsing="false" onAction="#apostar23" opacity="0.0" prefHeight="73.0" prefWidth="41.0" GridPane.columnIndex="7" GridPane.rowIndex="1" />
+            <Button fx:id="veintiseis" mnemonicParsing="false" onAction="#apostar26" opacity="0.0" prefHeight="73.0" prefWidth="41.0" GridPane.columnIndex="8" GridPane.rowIndex="1" />
+            <Button fx:id="veintinueve" mnemonicParsing="false" onAction="#apostar29" opacity="0.0" prefHeight="73.0" prefWidth="41.0" GridPane.columnIndex="9" GridPane.rowIndex="1" />
+            <Button fx:id="treintaycinco" mnemonicParsing="false" onAction="#apostar35" opacity="0.0" prefHeight="73.0" prefWidth="41.0" GridPane.columnIndex="11" GridPane.rowIndex="1" />
+            <Button fx:id="treintaydos" mnemonicParsing="false" onAction="#apostar32" opacity="0.0" prefHeight="73.0" prefWidth="41.0" GridPane.columnIndex="10" GridPane.rowIndex="1" />
+            <Button fx:id="diecinueve" mnemonicParsing="false" onAction="#apostar19" opacity="0.0" prefHeight="73.0" prefWidth="41.0" GridPane.columnIndex="6" GridPane.rowIndex="2" />
+            <Button fx:id="veintidos" mnemonicParsing="false" onAction="#apostar22" opacity="0.0" prefHeight="73.0" prefWidth="41.0" GridPane.columnIndex="7" GridPane.rowIndex="2" />
+            <Button fx:id="treintaycuatro" mnemonicParsing="false" onAction="#apostar34" opacity="0.0" prefHeight="73.0" prefWidth="41.0" GridPane.columnIndex="11" GridPane.rowIndex="2" />
+            <Button fx:id="diez" mnemonicParsing="false" onAction="#apostar10" opacity="0.0" prefHeight="73.0" prefWidth="41.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+            <Button fx:id="siete" mnemonicParsing="false" onAction="#apostar7" opacity="0.0" prefHeight="73.0" prefWidth="41.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Button fx:id="trece" mnemonicParsing="false" onAction="#apostar13" opacity="0.0" prefHeight="73.0" prefWidth="41.0" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+            <Button fx:id="dieciseis" mnemonicParsing="false" onAction="#apostar16" opacity="0.0" prefHeight="73.0" prefWidth="41.0" GridPane.columnIndex="5" GridPane.rowIndex="2" />
+            <Button fx:id="veinticinco" mnemonicParsing="false" onAction="#apostar25" opacity="0.0" prefHeight="73.0" prefWidth="41.0" GridPane.columnIndex="8" GridPane.rowIndex="2" />
+            <Button fx:id="veintiocho" mnemonicParsing="false" onAction="#apostar28" opacity="0.0" prefHeight="73.0" prefWidth="41.0" GridPane.columnIndex="9" GridPane.rowIndex="2" />
+            <Button fx:id="treintayuno" mnemonicParsing="false" onAction="#apostar31" opacity="0.0" prefHeight="73.0" prefWidth="41.0" GridPane.columnIndex="10" GridPane.rowIndex="2" />
+         </children>
+      </GridPane>
+      <Button fx:id="cero" layoutX="67.0" layoutY="56.0" mnemonicParsing="false" onAction="#apostar0" opacity="0.0" prefHeight="175.0" prefWidth="58.0" />
+      <Button fx:id="onetoeleven" layoutX="125.0" layoutY="231.0" mnemonicParsing="false" onAction="#apostarprim12" opacity="0.0" prefHeight="39.0" prefWidth="166.0" />
+      <Button fx:id="trecetodosdos" layoutX="289.0" layoutY="231.0" mnemonicParsing="false" onAction="#apostarsec12" opacity="0.0" prefHeight="39.0" prefWidth="166.0" />
+      <Button fx:id="vcincototresseis" layoutX="455.0" layoutY="231.0" mnemonicParsing="false" onAction="#apostartres12" opacity="0.0" prefHeight="39.0" prefWidth="166.0" />
+      <Button fx:id="unotodiezocho" layoutX="125.0" layoutY="270.0" mnemonicParsing="false" onAction="#apostaruno18" opacity="0.0" prefHeight="45.0" prefWidth="83.0" />
+      <Button fx:id="par" layoutX="208.0" layoutY="270.0" mnemonicParsing="false" onAction="#apostarPar" opacity="0.0" prefHeight="45.0" prefWidth="83.0" />
+      <Button fx:id="impar" layoutX="455.0" layoutY="270.0" mnemonicParsing="false" onAction="#apostarImp" opacity="0.0" prefHeight="45.0" prefWidth="83.0" />
+      <Button fx:id="dieznuevetotresseis" layoutX="538.0" layoutY="270.0" mnemonicParsing="false" onAction="#apostar1936" opacity="0.0" prefHeight="45.0" prefWidth="83.0" />
+      <Button fx:id="rojo" layoutX="289.0" layoutY="270.0" mnemonicParsing="false" onAction="#apostarRojo" opacity="0.0" prefHeight="45.0" prefWidth="83.0" />
+      <Button fx:id="negro" layoutX="372.0" layoutY="270.0" mnemonicParsing="false" onAction="#apostarNegro" opacity="0.0" prefHeight="45.0" prefWidth="83.0" />
+      <Button fx:id="lineauno" layoutX="618.0" layoutY="56.0" mnemonicParsing="false" onAction="#apostarl1" opacity="0.0" prefHeight="59.0" prefWidth="41.0" />
+      <Button fx:id="lineados" layoutX="618.0" layoutY="114.0" mnemonicParsing="false" onAction="#apostarl2" opacity="0.0" prefHeight="59.0" prefWidth="41.0" />
+      <Button fx:id="lineatres" layoutX="618.0" layoutY="172.0" mnemonicParsing="false" onAction="#apostarl3" opacity="0.0" prefHeight="59.0" prefWidth="41.0" />
+      <TextField fx:id="dinero" layoutX="513.0" layoutY="13.0" onAction="#apostarDinero" opacity="0.61" prefHeight="33.0" prefWidth="147.0" />
+      <ImageView fitHeight="39.0" fitWidth="234.0" layoutX="279.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/cooltext476379295993316.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
